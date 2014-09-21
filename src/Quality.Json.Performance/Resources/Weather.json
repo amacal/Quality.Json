@@ -1,0 +1,101 @@
+﻿{ "cnt" : 3,
+  "list" : [ { "clouds" : { "all" : 0 },
+        "coord" : { "lat" : 55.75,
+            "lon" : 37.619999999999997
+          },
+        "dt" : 1411148535,
+        "id" : 524901,
+        "main" : { "humidity" : 71,
+            "pressure" : 1026,
+            "temp" : 12.869999999999999,
+            "temp_max" : 15,
+            "temp_min" : 12
+          },
+        "name" : "Moscow",
+        "sys" : { "country" : "RU",
+            "id" : 7323,
+            "message" : 0.20119999999999999,
+            "sunrise" : 1411096190,
+            "sunset" : 1411140993,
+            "type" : 1
+          },
+        "weather" : [ { "description" : "Sky is Clear",
+              "icon" : "01n",
+              "id" : 800,
+              "main" : "Clear"
+            } ],
+        "wind" : { "deg" : 260,
+            "speed" : 3
+          }
+      },
+      { "clouds" : { "all" : 0 },
+        "coord" : { "lat" : 50.43,
+            "lon" : 30.52
+          },
+        "dt" : 1411148345,
+        "id" : 703448,
+        "main" : { "humidity" : 57,
+            "pressure" : 1025,
+            "temp" : 11,
+            "temp_max" : 15,
+            "temp_min" : 7
+          },
+        "name" : "Kiev",
+        "sys" : { "country" : "UA",
+            "id" : 7358,
+            "message" : 0.040599999999999997,
+            "sunrise" : 1411098015,
+            "sunset" : 1411142574,
+            "type" : 1
+          },
+        "weather" : [ { "description" : "Sky is Clear",
+              "icon" : "01n",
+              "id" : 800,
+              "main" : "Clear"
+            } ],
+        "wind" : { "deg" : 0,
+            "speed" : 1
+          }
+      },
+      { "clouds" : { "all" : 20 },
+        "coord" : { "lat" : 51.509999999999998,
+            "lon" : -0.13
+          },
+        "dt" : 1411148660,
+        "id" : 2643743,
+        "main" : { "humidity" : 78,
+            "pressure" : 1011,
+            "temp" : 20.829999999999998,
+            "temp_max" : 23,
+            "temp_min" : 17
+          },
+        "name" : "London",
+        "sys" : { "country" : "GB",
+            "id" : 5091,
+            "message" : 0.3165,
+            "sunrise" : 1411105356,
+            "sunset" : 1411149938,
+            "type" : 1
+          },
+        "weather" : [ { "description" : "mist",
+              "icon" : "50d",
+              "id" : 701,
+              "main" : "Mist"
+            },
+            { "description" : "proximity thunderstorm",
+              "icon" : "11d",
+              "id" : 211,
+              "main" : "Thunderstorm"
+            },
+            { "description" : "haze",
+              "icon" : "50d",
+              "id" : 721,
+              "main" : "Haze"
+            }
+          ],
+        "wind" : { "deg" : 10,
+            "speed" : 1
+          }
+      }
+    ]
+}
