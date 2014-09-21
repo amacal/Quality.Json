@@ -19,17 +19,17 @@ namespace Quality.Json.Performance.Domain
             this.items.Add(item);
         }
 
-        public IEnumerable<IDescriptive> GetCases()
+        public IEnumerable<ICaseInfo> GetCases()
         {
             return this.items.Select(x => x.Case).Distinct().OrderBy(x => x.Name);
         }
 
-        public IEnumerable<IDescriptive> GetSubjects()
+        public IEnumerable<ISubjectInfo> GetSubjects()
         {
             return this.items.Select(x => x.Subject).Distinct().OrderBy(x => x.Name);
         }
 
-        public IResultData GetDeserializationData(IDescriptive subject, IDescriptive @case)
+        public IResultData GetDeserializationData(ISubjectInfo subject, ICaseInfo @case)
         {
             return this.items
                 .Where(x => x.Subject== subject)
@@ -40,7 +40,7 @@ namespace Quality.Json.Performance.Domain
                 .FirstOrDefault();
         }
 
-        public IResultData GetSerializationData(IDescriptive subject, IDescriptive @case)
+        public IResultData GetSerializationData(ISubjectInfo subject, ICaseInfo @case)
         {
             return this.items
                 .Where(x => x.Subject == subject)

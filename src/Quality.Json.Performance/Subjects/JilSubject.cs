@@ -19,7 +19,7 @@ namespace Quality.Json.Performance.Subjects
             get { return null; }
         }
 
-        public bool IsSupported(IRequirement requirement)
+        public bool CanHandle(IRequirement requirement)
         {
             return requirement is CaseInsensitiveRequirement == false;
         }

@@ -2,12 +2,12 @@
 {
     internal class Result : IResult
     {
-        private readonly ICase @case;
+        private readonly ICaseInfo @case;
         private readonly IProcedure procedure;
-        private readonly ISubject subject;
+        private readonly ISubjectInfo subject;
         private readonly IResultData data;
 
-        public Result(ICase @case, IProcedure procedure, ISubject subject, IResultData data)
+        public Result(ICaseInfo @case, IProcedure procedure, ISubjectInfo subject, IResultData data)
         {
             this.@case = @case;
             this.procedure = procedure;
@@ -15,17 +15,17 @@
             this.data = data;
         }
 
-        public IDescriptive Case
+        public ICaseInfo Case
         {
             get { return this.@case; }
         }
 
-        public IDescriptive Procedure
+        public IProcedure Procedure
         {
             get { return this.procedure; }
         }
 
-        public IDescriptive Subject
+        public ISubjectInfo Subject
         {
             get { return this.subject; }
         }

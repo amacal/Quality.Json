@@ -39,7 +39,7 @@ namespace Quality.Json.Performance.Domain
             {
                 foreach (ISubject subject in this.subjects)
                 {
-                    if (@case.GetRequirements().All(subject.IsSupported) == true)
+                    if (@case.GetRequirements().All(subject.CanHandle) == true)
                     {
                         foreach (IProcedure procedure in this.procedures)
                         {

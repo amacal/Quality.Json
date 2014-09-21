@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Quality.Json.Performance.Printers
 {
@@ -16,48 +17,81 @@ namespace Quality.Json.Performance.Printers
 
         public void Print(IReport report, TextWriter output)
         {
+            ICollection<IRemark> remarks = new List<IRemark>();
+
+            foreach (ICaseInfo @case in report.GetCases())
+            {
+                this.PrintCaseHeader(output, @case);
+                this.PrintCaseTable(output, report, @case, remarks);
+            }
+
+            this.PrintRemarks(output, remarks);
+            output.Flush();
+        }
+
+        private void PrintCaseHeader(TextWriter output, ICaseInfo @case)
+        {
+            output.WriteLine("Case: {0}", @case.Name);
+            output.WriteLine("Requirements: {0}", String.Join(", ", @case.GetRequirements().Select(x => x.Name).DefaultIfEmpty("none")));
+            output.WriteLine();
+        }
+
+        private void PrintCaseTable(TextWriter output, IReport report, ICaseInfo @case, ICollection<IRemark> remarks)
+        {
+            this.PrintCaseTableHeader(output, @case);
+            this.PrintCaseTableContent(output, report, @case, remarks);
+            this.PrintCaseTableFooter(output);
+        }
+
+        private void PrintCaseTableHeader(TextWriter output, ICaseInfo @case)
+        {
             int procedureWidth = 19;
             int nameWidth = this.width - 2 * procedureWidth;
 
-            ICollection<IRemark> remarks = new List<IRemark>();
+            output.WriteLine(new String('-', this.width));
+            output.Write("Name".PadRight(nameWidth));
+            output.Write("Serialization".PadLeft(procedureWidth));
+            output.Write("Deserialization".PadLeft(procedureWidth));
+            output.WriteLine();
+            output.WriteLine(new String('-', this.width));
+        }
 
-            foreach (IDescriptive @case in report.GetCases())
+        private void PrintCaseTableContent(TextWriter output, IReport report, ICaseInfo @case, ICollection<IRemark> remarks)
+        {
+            int procedureWidth = 19;
+            int nameWidth = this.width - 2 * procedureWidth;
+
+            foreach (ISubjectInfo subject in report.GetSubjects())
             {
-                output.WriteLine("Case: {0}", @case.Name);
-                output.WriteLine();
-                output.WriteLine(new String('-', this.width));
-                output.Write("Name".PadRight(nameWidth));
-                output.Write("Serialization".PadLeft(procedureWidth));
-                output.Write("Deserialization".PadLeft(procedureWidth));
-                output.WriteLine();
-                output.WriteLine(new String('-', this.width));
+                IResultData serialization = report.GetSerializationData(subject, @case);
+                IResultData deserialization = report.GetDeserializationData(subject, @case);
 
-                foreach (IDescriptive subject in report.GetSubjects())
+                output.Write(subject.Name.PadRight(nameWidth));
+                output.Write(serialization.ToString().PadLeft(procedureWidth));
+                output.Write(deserialization.ToString().PadLeft(procedureWidth));
+                output.WriteLine();
+
+                if (serialization.HasRemark())
                 {
-                    IResultData serialization = report.GetSerializationData(subject, @case);
-                    IResultData deserialization = report.GetDeserializationData(subject, @case);
-
-                    output.Write(subject.Name.PadRight(nameWidth));
-                    output.Write(serialization.ToString().PadLeft(procedureWidth));
-                    output.Write(deserialization.ToString().PadLeft(procedureWidth));
-                    output.WriteLine();
-
-                    if (serialization.HasRemark())
-                    {
-                        remarks.Add(serialization.GetRemark());
-                    }
-
-                    if (deserialization.HasRemark())
-                    {
-                        remarks.Add(deserialization.GetRemark());
-                    }
+                    remarks.Add(serialization.GetRemark());
                 }
 
-                output.WriteLine(new String('-', this.width));
-                output.WriteLine();
-                output.WriteLine();
+                if (deserialization.HasRemark())
+                {
+                    remarks.Add(deserialization.GetRemark());
+                }
             }
+        }
 
+        private void PrintCaseTableFooter(TextWriter output)
+        {
+            output.WriteLine(new String('-', this.width));
+            output.WriteLine();
+            output.WriteLine();
+        }
+
+        private void PrintRemarks(TextWriter output, ICollection<IRemark> remarks)
+        {
             if (remarks.Count > 0)
             {
                 output.WriteLine("Remarks:");
@@ -68,8 +102,6 @@ namespace Quality.Json.Performance.Printers
                     output.WriteLine("# {0}", remark);
                 }
             }
-
-            output.Flush();
         }
     }
 }

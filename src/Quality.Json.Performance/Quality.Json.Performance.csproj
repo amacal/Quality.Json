@@ -65,11 +65,13 @@
     <Compile Include="Cases\MenuCase.cs" />
     <Compile Include="Cases\RowCase.cs" />
     <Compile Include="Cases\WeatherCase.cs" />
+    <Compile Include="Domain\ICaseInfo.cs" />
     <Compile Include="Domain\IDescriptive.cs" />
     <Compile Include="Domain\IRequirement.cs" />
     <Compile Include="Domain\IRemark.cs" />
     <Compile Include="Domain\IReport.cs" />
     <Compile Include="Domain\IReportPrinter.cs" />
+    <Compile Include="Domain\ISubjectInfo.cs" />
     <Compile Include="Domain\ITestInstance.cs" />
     <Compile Include="Domain\ITestSuit.cs" />
     <Compile Include="Domain\ITestSuitBuilder.cs" />

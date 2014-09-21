@@ -4,12 +4,12 @@ namespace Quality.Json.Performance.Domain
 {
     public interface IReport
     {
-        IEnumerable<IDescriptive> GetCases();
+        IEnumerable<ICaseInfo> GetCases();
 
-        IEnumerable<IDescriptive> GetSubjects();
+        IEnumerable<ISubjectInfo> GetSubjects();
 
-        IResultData GetDeserializationData(IDescriptive subject, IDescriptive @case);
+        IResultData GetDeserializationData(ISubjectInfo subject, ICaseInfo @case);
 
-        IResultData GetSerializationData(IDescriptive subject, IDescriptive @case);
+        IResultData GetSerializationData(ISubjectInfo subject, ICaseInfo @case);
     }
 }

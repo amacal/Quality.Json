@@ -2,11 +2,11 @@
 {
     public interface IResult
     {
-        IDescriptive Case { get; }
+        ICaseInfo Case { get; }
 
-        IDescriptive Procedure { get; }
+        IProcedure Procedure { get; }
 
-        IDescriptive Subject { get; }
+        ISubjectInfo Subject { get; }
 
         IResultData Data { get; }
     }

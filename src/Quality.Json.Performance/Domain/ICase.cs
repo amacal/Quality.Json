@@ -1,11 +1,7 @@
-﻿using System.Collections.Generic;
-
-namespace Quality.Json.Performance.Domain
+﻿namespace Quality.Json.Performance.Domain
 {
-    public interface ICase : IDescriptive
+    public interface ICase : ICaseInfo
     {
-        IEnumerable<IRequirement> GetRequirements();
-
         IResultData Execute(IProcedure procedure, ISubject subject);
     }
 }

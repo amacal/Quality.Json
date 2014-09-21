@@ -2,10 +2,8 @@
 
 namespace Quality.Json.Performance.Domain
 {
-    public interface ISubject : IDescriptive
+    public interface ISubject : ISubjectInfo
     {
-        bool IsSupported(IRequirement requirement);
-
         string Serialize<T>(T instance) 
             where T : class, new();
 
