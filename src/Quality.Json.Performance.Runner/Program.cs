@@ -27,6 +27,7 @@ namespace Quality.Json.Performance.Runner
             builder.AddSubject(new NancySubject());
             builder.AddSubject(new JsonToolkitSubject());
             builder.AddSubject(new JilSubject());
+            builder.AddSubject(new FastJsonSubject());
 
             builder.AddProcedure(new SerializeProcedure(100));
             builder.AddProcedure(new DeserializeProcedure(100));

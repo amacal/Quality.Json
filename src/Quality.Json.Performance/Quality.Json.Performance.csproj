@@ -33,6 +33,9 @@
     <Reference Include="ComputerBeacon.Json">
       <HintPath>..\..\lib\ComputerBeacon.Json.4.3.832\lib\portable-net4+sl4+wp7+win8\ComputerBeacon.Json.dll</HintPath>
     </Reference>
+    <Reference Include="fastjson">
+      <HintPath>..\..\lib\fastJSON.2.1.3.0\lib\net40\fastjson.dll</HintPath>
+    </Reference>
     <Reference Include="Jil">
       <HintPath>..\..\lib\Jil.2.1.0\lib\net45\Jil.dll</HintPath>
     </Reference>
@@ -103,6 +106,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Results\NotSupportedRequirementResult.cs" />
     <Compile Include="Results\Remark.cs" />
+    <Compile Include="Subjects\FastJsonSubject.cs" />
     <Compile Include="Subjects\JilSubject.cs" />
     <Compile Include="Subjects\JsonToolkitSubject.cs" />
     <Compile Include="Subjects\NancySubject.cs" />
