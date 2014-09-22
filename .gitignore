@@ -3,3 +3,6 @@
 
 [Dd]ebug*/
 [Rr]elease*/
+lib/
+output/
+temp/

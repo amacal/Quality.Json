@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A7E1269B-1931-4627-A486-7100D58EA00E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Quality.Json.Performance</RootNamespace>
+    <AssemblyName>Quality.Json.Performance</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ComputerBeacon.Json">
+      <HintPath>..\..\lib\ComputerBeacon.Json.4.3.832\lib\portable-net4+sl4+wp7+win8\ComputerBeacon.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="fastjson">
+      <HintPath>..\..\lib\fastJSON.2.1.3.0\lib\net40\fastjson.dll</HintPath>
+    </Reference>
+    <Reference Include="Jil">
+      <HintPath>..\..\lib\Jil.2.1.0\lib\net45\Jil.dll</HintPath>
+    </Reference>
+    <Reference Include="KellermanSoftware.Compare-NET-Objects">
+      <HintPath>..\..\lib\CompareNETObjects.3.01.0.0\lib\net45\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\..\lib\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="NetJSON, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\NetJSON.1.0.4\lib\net40\NetJSON.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text">
+      <HintPath>..\..\lib\ServiceStack.Text.4.0.31\lib\net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="Sigil">
+      <HintPath>..\..\lib\Sigil.4.2.2\lib\net45\Sigil.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cases\CongressCase.cs" />
+    <Compile Include="Cases\GlossaryCase.cs" />
+    <Compile Include="Cases\MenuCase.cs" />
+    <Compile Include="Cases\RowCase.cs" />
+    <Compile Include="Cases\WeatherCase.cs" />
+    <Compile Include="Domain\ICaseInfo.cs" />
+    <Compile Include="Domain\IDescriptive.cs" />
+    <Compile Include="Domain\IRequirement.cs" />
+    <Compile Include="Domain\IRemark.cs" />
+    <Compile Include="Domain\IReport.cs" />
+    <Compile Include="Domain\IReportPrinter.cs" />
+    <Compile Include="Domain\ISubjectInfo.cs" />
+    <Compile Include="Domain\ITestInstance.cs" />
+    <Compile Include="Domain\ITestSuit.cs" />
+    <Compile Include="Domain\ITestSuitBuilder.cs" />
+    <Compile Include="Requirements\CaseInsensitiveRequirement.cs" />
+    <Compile Include="Printers\PlanTextPrinter.cs" />
+    <Compile Include="Domain\TestSuitBuilder.cs" />
+    <Compile Include="Resources\Congress.cs" />
+    <Compile Include="Resources\Row.cs" />
+    <Compile Include="Cases\WidgetCase.cs" />
+    <Compile Include="Results\MeasuredDurationResult.cs" />
+    <Compile Include="Results\FailedByExceptionResult.cs" />
+    <Compile Include="Domain\ICase.cs" />
+    <Compile Include="Domain\IProcedure.cs" />
+    <Compile Include="Domain\IResource.cs" />
+    <Compile Include="Domain\IResult.cs" />
+    <Compile Include="Domain\IResultData.cs" />
+    <Compile Include="Domain\ISubject.cs" />
+    <Compile Include="Domain\Result.cs" />
+    <Compile Include="Domain\Report.cs" />
+    <Compile Include="Domain\TestInstance.cs" />
+    <Compile Include="Domain\TestSuit.cs" />
+    <Compile Include="Results\InvalidComparisionResult.cs" />
+    <Compile Include="Procedures\DeserializeProcedure.cs" />
+    <Compile Include="Procedures\SerializeProcedure.cs" />
+    <Compile Include="Resources\Glossary.cs" />
+    <Compile Include="Resources\Menu.cs" />
+    <Compile Include="Resources\Weather.cs" />
+    <Compile Include="Resources\Widget.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\NotSupportedRequirementResult.cs" />
+    <Compile Include="Results\Remark.cs" />
+    <Compile Include="Subjects\FastJsonSubject.cs" />
+    <Compile Include="Subjects\JilSubject.cs" />
+    <Compile Include="Subjects\JsonToolkitSubject.cs" />
+    <Compile Include="Subjects\NancySubject.cs" />
+    <Compile Include="Subjects\NetJsonSubject.cs" />
+    <Compile Include="Subjects\NewtonsoftSubject.cs" />
+    <Compile Include="Subjects\ServiceStackSubject.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Menu.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Widget.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Glossary.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Row.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Weather.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Congress.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
