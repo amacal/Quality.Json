@@ -28,13 +28,13 @@ namespace Quality.Json.Performance.Subjects
         }
 
         public string Serialize<T>(T instance)
-            where T : class, new()
+            where T : class
         {
             return NetJSON.NetJSON.Serialize<T>(instance);
         }
 
         public T Deserialize<T>(string data) 
-            where T : class, new()
+            where T : class
         {
             return NetJSON.NetJSON.Deserialize<T>(data);
         }

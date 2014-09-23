@@ -26,7 +26,7 @@ namespace Quality.Json.Performance.Procedures
         }
 
         public IResultData Process<T>(IResource<T> resource, ISubject subject)
-            where T : class, new()
+            where T : class
         {
             IResultData result = null;
 
@@ -44,7 +44,7 @@ namespace Quality.Json.Performance.Procedures
         }
 
         private IResultData ValidateContent<T>(IResource<T> resource, ISubject subject)
-            where T : class, new()
+            where T : class
         {
             string text = resource.GetText();
             T template = resource.GetInstance();
@@ -64,7 +64,7 @@ namespace Quality.Json.Performance.Procedures
         }
 
         private IResultData DeserializeInLoop<T>(IResource<T> resource, ISubject subject)
-            where T : class, new()
+            where T : class
         {
             int times = resource.Multiply(this.times);
             string text = resource.GetText();

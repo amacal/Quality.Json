@@ -26,7 +26,7 @@ namespace Quality.Json.Performance.Procedures
         }
 
         public IResultData Process<T>(IResource<T> resource, ISubject subject)
-            where T : class, new()
+            where T : class
         {
             IResultData result = null;
 
@@ -44,7 +44,7 @@ namespace Quality.Json.Performance.Procedures
         }
 
         private IResultData ValidateContent<T>(IResource<T> resource, ISubject subject)
-            where T : class, new()
+            where T : class
         {
             T instance = resource.GetInstance();
             ICompareLogic comparer = new CompareLogic(new ComparisonConfig { MaxDifferences = 100 });
@@ -64,7 +64,7 @@ namespace Quality.Json.Performance.Procedures
         }
 
         private IResultData SerializeInLoop<T>(IResource<T> resource, ISubject subject)
-            where T : class, new()
+            where T : class
         {
             int times = resource.Multiply(this.times);
             T instance = resource.GetInstance();

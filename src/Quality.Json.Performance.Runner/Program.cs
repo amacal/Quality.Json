@@ -20,6 +20,7 @@ namespace Quality.Json.Performance.Runner
             builder.AddCase(new RowCase());
             builder.AddCase(new WeatherCase());
             builder.AddCase(new CongressCase());
+            builder.AddCase(new JobsCase());
 
             builder.AddSubject(new NewtonsoftSubject());
             builder.AddSubject(new ServiceStackSubject());

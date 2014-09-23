@@ -1,7 +1,7 @@
 ﻿namespace Quality.Json.Performance.Domain
 {
     public interface IResource<T>
-        where T : class, new()
+        where T : class
     {
         string GetText();
 
