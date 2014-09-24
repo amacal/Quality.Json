@@ -45,7 +45,7 @@ namespace Quality.Json.Performance.Cases
             return times * 200;
         }
 
-        public GlossaryContainer GetInstance() 
+        public GlossaryContainer GetInstance()
         {
             return new GlossaryContainer
             {
@@ -67,7 +67,7 @@ namespace Quality.Json.Performance.Cases
                                 glossdef = new GlossaryContainer.GlossaryDef
                                 {
                                     para = "A meta-markup language, used to create markup languages such as DocBook.",
-                                    glossseealso = new string[]{ "GML", "XML" }
+                                    glossseealso = new string[] { "GML", "XML" }
                                 },
                                 glosssee = "markup"
                             }

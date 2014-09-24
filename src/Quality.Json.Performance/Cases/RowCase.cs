@@ -67,11 +67,11 @@ namespace Quality.Json.Performance.Cases
                 latitude = 49.911697,
                 longitude = -6.562665,
                 tags = new string[] { "incididunt", "laborum", "proident", "quis", "do", "dolor", "reprehenderit" },
-                friends = new[] 
-                { 
-                    new Row.Friend{ id = 0, name = "Maryann Rocha"},
-                    new Row.Friend{ id = 1, name = "Stevens Luna"},
-                    new Row.Friend{ id = 2, name = "Sanders Cantu"}
+                friends = new[]
+                {
+                    new Row.Friend { id = 0, name = "Maryann Rocha" },
+                    new Row.Friend { id = 1, name = "Stevens Luna" },
+                    new Row.Friend { id = 2, name = "Sanders Cantu" }
                 },
                 greeting = "Hello, Craft Arnold! You have 3 unread messages.",
                 favoriteFruit = "banana"

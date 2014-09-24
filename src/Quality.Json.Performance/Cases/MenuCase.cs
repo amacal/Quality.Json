@@ -54,8 +54,8 @@ namespace Quality.Json.Performance.Cases
                     value = "File",
                     popup = new MenuContainer.Popup
                     {
-                        menuitem = new[] 
-                        { 
+                        menuitem = new[]
+                        {
                             new MenuContainer.MenuItem { value = "New", onclick = "CreateNewDoc()" },
                             new MenuContainer.MenuItem { value = "Open", onclick = "OpenDoc()" },
                             new MenuContainer.MenuItem { value = "Close", onclick = "CloseDoc()" },

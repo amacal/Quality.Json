@@ -57,7 +57,7 @@ namespace Quality.Json.Performance.Cases
                         dt = 1411148535,
                         name = "Moscow",
                         clouds = new WeatherContainer.Clouds { all = 0 },
-                        coord = new WeatherContainer.Coordinates { lat=55.75, lon = 37.619999999999997 },
+                        coord = new WeatherContainer.Coordinates { lat = 55.75, lon = 37.619999999999997 },
                         main = new WeatherContainer.Main
                         {
                             humidity = 71,
@@ -75,7 +75,7 @@ namespace Quality.Json.Performance.Cases
                             sunset = 1411140993,
                             type = 1
                         },
-                        weather = new []
+                        weather = new[]
                         {
                             new WeatherContainer.Weather
                             {
@@ -97,7 +97,7 @@ namespace Quality.Json.Performance.Cases
                         dt = 1411148345,
                         name = "Kiev",
                         clouds = new WeatherContainer.Clouds { all = 0 },
-                        coord = new WeatherContainer.Coordinates { lat=50.43, lon = 30.52 },
+                        coord = new WeatherContainer.Coordinates { lat = 50.43, lon = 30.52 },
                         main = new WeatherContainer.Main
                         {
                             humidity = 57,
@@ -115,7 +115,7 @@ namespace Quality.Json.Performance.Cases
                             sunset = 1411142574,
                             type = 1
                         },
-                        weather = new []
+                        weather = new[]
                         {
                             new WeatherContainer.Weather
                             {
@@ -137,7 +137,7 @@ namespace Quality.Json.Performance.Cases
                         dt = 1411148660,
                         name = "London",
                         clouds = new WeatherContainer.Clouds { all = 20 },
-                        coord = new WeatherContainer.Coordinates { lat=51.509999999999998, lon = -0.13 },
+                        coord = new WeatherContainer.Coordinates { lat = 51.509999999999998, lon = -0.13 },
                         main = new WeatherContainer.Main
                         {
                             humidity = 78,
@@ -155,7 +155,7 @@ namespace Quality.Json.Performance.Cases
                             sunset = 1411149938,
                             type = 1
                         },
-                        weather = new []
+                        weather = new[]
                         {
                             new WeatherContainer.Weather
                             {

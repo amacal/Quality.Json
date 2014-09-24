@@ -32,7 +32,7 @@ namespace Quality.Json.Performance.Domain
         public IResultData GetDeserializationData(ISubjectInfo subject, ICaseInfo @case)
         {
             return this.items
-                .Where(x => x.Subject== subject)
+                .Where(x => x.Subject == subject)
                 .Where(x => x.Case == @case)
                 .Where(x => x.Procedure.Name == "Deserialize")
                 .Select(x => x.Data)

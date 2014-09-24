@@ -33,7 +33,7 @@ namespace Quality.Json.Performance.Subjects
             return NetJSON.NetJSON.Serialize<T>(instance);
         }
 
-        public T Deserialize<T>(string data) 
+        public T Deserialize<T>(string data)
             where T : class
         {
             return NetJSON.NetJSON.Deserialize<T>(data);
