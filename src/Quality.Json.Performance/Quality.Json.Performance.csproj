@@ -155,6 +155,11 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Number.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
