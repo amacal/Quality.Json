@@ -67,6 +67,7 @@
     <Compile Include="Cases\GlossaryCase.cs" />
     <Compile Include="Cases\JobsCase.cs" />
     <Compile Include="Cases\MenuCase.cs" />
+    <Compile Include="Cases\NumberCase.cs" />
     <Compile Include="Cases\RowCase.cs" />
     <Compile Include="Cases\WeatherCase.cs" />
     <Compile Include="Domain\ICaseInfo.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Domain\TestSuitBuilder.cs" />
     <Compile Include="Resources\Congress.cs" />
     <Compile Include="Resources\Jobs.cs" />
+    <Compile Include="Resources\Number.cs" />
     <Compile Include="Resources\Row.cs" />
     <Compile Include="Cases\WidgetCase.cs" />
     <Compile Include="Results\MeasuredDurationResult.cs" />
@@ -144,6 +146,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Jobs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Number.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
