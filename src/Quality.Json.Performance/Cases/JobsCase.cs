@@ -41,7 +41,7 @@ namespace Quality.Json.Performance.Cases
 
         public int Multiply(int times)
         {
-            return times * 200;
+            return times * 100;
         }
 
         public Job[] GetInstance()
