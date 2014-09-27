@@ -69,6 +69,7 @@
     <Compile Include="Cases\MenuCase.cs" />
     <Compile Include="Cases\NumberCase.cs" />
     <Compile Include="Cases\RowCase.cs" />
+    <Compile Include="Cases\TwitterCase.cs" />
     <Compile Include="Cases\WeatherCase.cs" />
     <Compile Include="Domain\ICaseInfo.cs" />
     <Compile Include="Domain\IDescriptive.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Resources\Number.cs" />
     <Compile Include="Resources\Row.cs" />
     <Compile Include="Cases\WidgetCase.cs" />
+    <Compile Include="Resources\Twitter.cs" />
     <Compile Include="Results\MeasuredDurationResult.cs" />
     <Compile Include="Results\FailedByExceptionResult.cs" />
     <Compile Include="Domain\ICase.cs" />
@@ -161,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Resources\Twitter.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
