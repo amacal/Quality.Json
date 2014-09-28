@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 
 namespace Quality.Json.Performance.Domain
 {
@@ -27,6 +28,7 @@ namespace Quality.Json.Performance.Domain
 
         public IResult Execute(ITimes times)
         {
+            Log.Debug("Creating AppDomain for {Case}, {Subject}, {Procedure}", this.@case.Name, this.subject.Name, this.procedure.Name);
             AppDomain domain = AppDomain.CreateDomain(String.Join("-", this.@case.Name, this.subject.Name, this.procedure.Name));
 
             try

@@ -3,6 +3,9 @@ using Quality.Json.Performance.Domain;
 using Quality.Json.Performance.Printers;
 using Quality.Json.Performance.Procedures;
 using Quality.Json.Performance.Subjects;
+using Serilog;
+using Serilog.Enrichers;
+using Serilog.Events;
 using System;
 using System.IO;
 
@@ -11,6 +14,33 @@ namespace Quality.Json.Performance.Runner
     public class Program
     {
         public static void Main()
+        {
+            Program.InitializeLogger();
+            Program.ExecuteTests();
+
+            Console.ReadKey();
+        }
+
+        private static void InitializeLogger()
+        {
+            Log.Logger =
+                new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                    .Enrich.WithThreadId()
+                    .WriteTo.Console(LogEventLevel.Information)
+                    .WriteTo.File("Quality.Json.Performance.Runner.txt", LogEventLevel.Debug)
+                    .CreateLogger();
+        }
+
+        private static void ExecuteTests()
+        {
+            ITestSuit suit = Program.CreateSuit();
+            IReport report = suit.Execute(new Times(100));
+
+            report.Print(new ConsolePrinter());
+        }
+
+        private static ITestSuit CreateSuit()
         {
             ITestSuitBuilder builder = new TestSuitBuilder();
 
@@ -35,11 +65,7 @@ namespace Quality.Json.Performance.Runner
             builder.AddProcedure(new SerializeProcedure());
             builder.AddProcedure(new DeserializeProcedure());
 
-            ITestSuit suit = builder.Build();
-            IReport report = suit.Execute(new Times(100));
-
-            report.Print(new ConsolePrinter());
-            Console.ReadKey();
+            return builder.Build();
         }
     }
 }

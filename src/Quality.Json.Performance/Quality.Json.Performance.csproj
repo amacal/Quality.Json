@@ -52,6 +52,12 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\lib\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Serilog">
+      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx">
+      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.FullNetFx.dll</HintPath>
+    </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\..\lib\ServiceStack.Text.4.0.31\lib\net40\ServiceStack.Text.dll</HintPath>
     </Reference>

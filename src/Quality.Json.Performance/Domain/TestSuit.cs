@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -55,6 +56,8 @@ namespace Quality.Json.Performance.Domain
             {
                 while (true)
                 {
+                    Log.Information("Executing {Case} {Times}", this.@case.Name, times.Describe());
+
                     MinDurationVisitor visitor = new MinDurationVisitor();
                     IResult[] results = instances.Select(x => x.Execute(times)).ToArray();
 

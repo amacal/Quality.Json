@@ -24,5 +24,15 @@ namespace Quality.Json.Performance.Domain
                 routine.Execute();
             }
         }
+
+        public string Describe()
+        {
+            if (this.count == 1)
+            {
+                return "1 time";
+            }
+
+            return this.count + " times";
+        }
     }
 }
