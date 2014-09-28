@@ -67,8 +67,8 @@ namespace Quality.Json.Performance.Printers
                 IResultData deserialization = report.GetDeserializationData(subject, @case);
 
                 output.Write(subject.Name.PadRight(nameWidth));
-                output.Write(serialization.ToString().PadLeft(procedureWidth));
-                output.Write(deserialization.ToString().PadLeft(procedureWidth));
+                output.Write(serialization.Describe().PadLeft(procedureWidth));
+                output.Write(deserialization.Describe().PadLeft(procedureWidth));
                 output.WriteLine();
 
                 if (serialization.HasRemark())

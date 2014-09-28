@@ -23,7 +23,7 @@ namespace Quality.Json.Performance.Results
             return this.remark;
         }
 
-        public override string ToString()
+        public string Describe()
         {
             return "INVALID   ";
         }

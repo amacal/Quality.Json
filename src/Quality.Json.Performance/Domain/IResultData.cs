@@ -6,6 +6,6 @@
 
         IRemark GetRemark();
 
-        string ToString();
+        string Describe();
     }
 }

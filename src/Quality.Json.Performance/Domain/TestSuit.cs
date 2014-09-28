@@ -4,14 +4,14 @@ namespace Quality.Json.Performance.Domain
 {
     internal class TestSuit : ITestSuit
     {
-        private readonly List<TestInstance> items;
+        private readonly List<ITestInstance> items;
 
         public TestSuit()
         {
-            this.items = new List<TestInstance>();
+            this.items = new List<ITestInstance>();
         }
 
-        public void AddInstance(TestInstance instance)
+        public void AddInstance(ITestInstance instance)
         {
             this.items.Add(instance);
         }
