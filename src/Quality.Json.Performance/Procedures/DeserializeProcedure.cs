@@ -8,13 +8,6 @@ namespace Quality.Json.Performance.Procedures
     [Serializable]
     public class DeserializeProcedure : IProcedure
     {
-        private readonly int times;
-
-        public DeserializeProcedure(int times)
-        {
-            this.times = times;
-        }
-
         public string Name
         {
             get { return "Deserialize"; }
@@ -25,15 +18,15 @@ namespace Quality.Json.Performance.Procedures
             get { return null; }
         }
 
-        public IResultData Process<T>(IResource<T> resource, ISubject subject)
+        public IResultData Process<T>(IResource<T> resource, ISubject subject, ITimes times)
             where T : class
         {
             IResultData result = null;
 
             try
             {
-                result = result ?? ValidateContent<T>(resource, subject);
-                result = result ?? DeserializeInLoop<T>(resource, subject);
+                result = result ?? Validate<T>(resource, subject);
+                result = result ?? Deserialize<T>(resource, subject, times);
             }
             catch (Exception ex)
             {
@@ -43,7 +36,7 @@ namespace Quality.Json.Performance.Procedures
             return result;
         }
 
-        private IResultData ValidateContent<T>(IResource<T> resource, ISubject subject)
+        private IResultData Validate<T>(IResource<T> resource, ISubject subject)
             where T : class
         {
             string text = resource.GetText();
@@ -63,20 +56,35 @@ namespace Quality.Json.Performance.Procedures
             return result;
         }
 
-        private IResultData DeserializeInLoop<T>(IResource<T> resource, ISubject subject)
+        private IResultData Deserialize<T>(IResource<T> resource, ISubject subject, ITimes times)
             where T : class
         {
-            int times = resource.Multiply(this.times);
+            times = resource.Multiply(times);
             string text = resource.GetText();
 
+            IRoutine routine = new Routine<T>(subject, text);
             DateTime started = DateTime.Now;
 
-            for (int i = 0; i < times; i++)
+            times.Execute(routine);
+            return new MeasuredDurationResult(DateTime.Now - started);
+        }
+
+        private class Routine<T> : IRoutine
+            where T : class
+        {
+            private readonly ISubject subject;
+            private readonly string text;
+
+            public Routine(ISubject subject, string text)
             {
-                subject.Deserialize<T>(text);
+                this.subject = subject;
+                this.text = text;
             }
 
-            return new MeasuredDurationResult(DateTime.Now - started);
+            public void Execute()
+            {
+                this.subject.Deserialize<T>(this.text);
+            }
         }
     }
 }

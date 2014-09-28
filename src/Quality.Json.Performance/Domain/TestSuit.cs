@@ -16,13 +16,13 @@ namespace Quality.Json.Performance.Domain
             this.items.Add(instance);
         }
 
-        public IReport Execute()
+        public IReport Execute(ITimes times)
         {
             Report report = new Report();
 
             foreach (ITestInstance instance in this.items)
             {
-                report.AddResult(instance.Execute());
+                report.AddResult(instance.Execute(times));
             }
 
             return report;

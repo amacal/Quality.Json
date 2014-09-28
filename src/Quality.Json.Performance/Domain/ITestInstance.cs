@@ -2,6 +2,6 @@
 {
     public interface ITestInstance
     {
-        IResult Execute();
+        IResult Execute(ITimes times);
     }
 }

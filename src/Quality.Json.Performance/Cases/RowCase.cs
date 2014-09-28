@@ -24,9 +24,9 @@ namespace Quality.Json.Performance.Cases
             yield break;
         }
 
-        public IResultData Execute(IProcedure procedure, ISubject subject)
+        public IResultData Execute(IProcedure procedure, ISubject subject, ITimes times)
         {
-            return procedure.Process(this, subject);
+            return procedure.Process(this, subject, times);
         }
 
         public string GetText()
@@ -39,9 +39,9 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllBytes(@"Resources\Row.json");
         }
 
-        public int Multiply(int times)
+        public ITimes Multiply(ITimes times)
         {
-            return times * 100;
+            return times.Multiply(100);
         }
 
         public Row GetInstance()

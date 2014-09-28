@@ -2,7 +2,7 @@
 {
     public interface IProcedure : IDescriptive
     {
-        IResultData Process<T>(IResource<T> resource, ISubject subject)
+        IResultData Process<T>(IResource<T> resource, ISubject subject, ITimes times)
             where T : class;
     }
 }

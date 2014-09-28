@@ -78,10 +78,13 @@
     <Compile Include="Domain\IRemark.cs" />
     <Compile Include="Domain\IReport.cs" />
     <Compile Include="Domain\IPrinter.cs" />
+    <Compile Include="Domain\IRoutine.cs" />
     <Compile Include="Domain\ISubjectInfo.cs" />
     <Compile Include="Domain\ITestInstance.cs" />
     <Compile Include="Domain\ITestSuit.cs" />
     <Compile Include="Domain\ITestSuitBuilder.cs" />
+    <Compile Include="Domain\ITimes.cs" />
+    <Compile Include="Domain\Times.cs" />
     <Compile Include="Printers\ConsolePrinter.cs" />
     <Compile Include="Requirements\CaseInsensitiveRequirement.cs" />
     <Compile Include="Printers\PlainTextPrinter.cs" />

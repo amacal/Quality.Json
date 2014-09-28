@@ -9,6 +9,6 @@
 
         T GetInstance();
 
-        int Multiply(int times);
+        ITimes Multiply(ITimes source);
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ICase : ICaseInfo
     {
-        IResultData Execute(IProcedure procedure, ISubject subject);
+        IResultData Execute(IProcedure procedure, ISubject subject, ITimes times);
     }
 }

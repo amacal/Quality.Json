@@ -8,13 +8,6 @@ namespace Quality.Json.Performance.Procedures
     [Serializable]
     public class SerializeProcedure : IProcedure
     {
-        private readonly int times;
-
-        public SerializeProcedure(int times)
-        {
-            this.times = times;
-        }
-
         public string Name
         {
             get { return "Serialize"; }
@@ -25,15 +18,15 @@ namespace Quality.Json.Performance.Procedures
             get { return null; }
         }
 
-        public IResultData Process<T>(IResource<T> resource, ISubject subject)
+        public IResultData Process<T>(IResource<T> resource, ISubject subject, ITimes times)
             where T : class
         {
             IResultData result = null;
 
             try
             {
-                result = result ?? ValidateContent<T>(resource, subject);
-                result = result ?? SerializeInLoop<T>(resource, subject);
+                result = result ?? Validate<T>(resource, subject);
+                result = result ?? Serialize<T>(resource, subject, times);
             }
             catch (Exception ex)
             {
@@ -43,7 +36,7 @@ namespace Quality.Json.Performance.Procedures
             return result;
         }
 
-        private IResultData ValidateContent<T>(IResource<T> resource, ISubject subject)
+        private IResultData Validate<T>(IResource<T> resource, ISubject subject)
             where T : class
         {
             T instance = resource.GetInstance();
@@ -63,20 +56,35 @@ namespace Quality.Json.Performance.Procedures
             return result;
         }
 
-        private IResultData SerializeInLoop<T>(IResource<T> resource, ISubject subject)
+        private IResultData Serialize<T>(IResource<T> resource, ISubject subject, ITimes times)
             where T : class
         {
-            int times = resource.Multiply(this.times);
+            times = resource.Multiply(times);
             T instance = resource.GetInstance();
 
+            IRoutine routine = new Routine<T>(subject, instance);
             DateTime started = DateTime.Now;
 
-            for (int i = 0; i < times; i++)
+            times.Execute(routine);
+            return new MeasuredDurationResult(DateTime.Now - started);
+        }
+
+        private class Routine<T> : IRoutine
+            where T : class
+        {
+            private readonly ISubject subject;
+            private readonly T instance;
+
+            public Routine(ISubject subject, T instance)
             {
-                subject.Serialize<T>(instance);
+                this.subject = subject;
+                this.instance = instance;
             }
 
-            return new MeasuredDurationResult(DateTime.Now - started);
+            public void Execute()
+            {
+                this.subject.Serialize(this.instance);
+            }
         }
     }
 }

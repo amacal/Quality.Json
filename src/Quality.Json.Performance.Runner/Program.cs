@@ -32,11 +32,11 @@ namespace Quality.Json.Performance.Runner
             builder.AddSubject(new JilSubject());
             builder.AddSubject(new FastJsonSubject());
 
-            builder.AddProcedure(new SerializeProcedure(100));
-            builder.AddProcedure(new DeserializeProcedure(100));
+            builder.AddProcedure(new SerializeProcedure());
+            builder.AddProcedure(new DeserializeProcedure());
 
             ITestSuit suit = builder.Build();
-            IReport report = suit.Execute();
+            IReport report = suit.Execute(new Times(100));
 
             report.Print(new ConsolePrinter());
             Console.ReadKey();
