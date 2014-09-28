@@ -11,13 +11,13 @@ Requirements: none
 -------------------------------------------------------------------------------
 Name                                           Serialization    Deserialization
 -------------------------------------------------------------------------------
-fastJSON-2.1.3.0                                   85,948 ms         215,836 ms
-Jil-2.1.0                                          FAILED            116,209 ms
-JsonToolkit-4.3.832.1632                          249,999 ms         243,160 ms
-Nancy-0.23.2.0                                    575,202 ms         812,500 ms
-NetJSON-1.0.4.2                                    43,949 ms          93,747 ms
-Newtonsoft.Json-6.0.5.17707                       110,323 ms         144,519 ms
-ServiceStack.Text-4.0.31.0                         92,781 ms         218,759 ms
+fastJSON-2.1.3.0                                  347,662 ms         377,301 ms
+Jil-2.1.0                                          FAILED            187,816 ms
+JsonToolkit-4.3.832.1632                          634,885 ms         424,811 ms
+Nancy-0.23.2.0                                   1141,591 ms        1465,850 ms
+NetJSON-1.0.4.2                                    90,011 ms         158,338 ms
+Newtonsoft.Json-6.0.5.17707                       408,149 ms         249,056 ms
+ServiceStack.Text-4.0.31.0                        179,997 ms         405,228 ms
 -------------------------------------------------------------------------------
 
 
@@ -27,13 +27,13 @@ Requirements: case-insensitive
 -------------------------------------------------------------------------------
 Name                                           Serialization    Deserialization
 -------------------------------------------------------------------------------
-fastJSON-2.1.3.0                                   97,653 ms         394,537 ms
+fastJSON-2.1.3.0                                  173,837 ms         658,396 ms
 Jil-2.1.0                                          -- --- --          -- --- --
 JsonToolkit-4.3.832.1632                           -- --- --          -- --- --
-Nancy-0.23.2.0                                    733,419 ms        1134,760 ms
-NetJSON-1.0.4.2                                    29,293 ms         107,639 ms
-Newtonsoft.Json-6.0.5.17707                       143,559 ms         284,187 ms
-ServiceStack.Text-4.0.31.0                         93,750 ms         338,870 ms
+Nancy-0.23.2.0                                   1300,680 ms        2076,266 ms
+NetJSON-1.0.4.2                                    64,495 ms         198,370 ms
+Newtonsoft.Json-6.0.5.17707                       302,879 ms         449,224 ms
+ServiceStack.Text-4.0.31.0                        163,118 ms         667,087 ms
 -------------------------------------------------------------------------------
 
 
@@ -44,12 +44,12 @@ Requirements: none
 Name                                           Serialization    Deserialization
 -------------------------------------------------------------------------------
 fastJSON-2.1.3.0                                   FAILED             FAILED
-Jil-2.1.0                                        2381,835 ms        2088,657 ms
-JsonToolkit-4.3.832.1632                         2161,116 ms        1839,859 ms
-Nancy-0.23.2.0                                   4523,438 ms        6879,890 ms
-NetJSON-1.0.4.2                                  1824,230 ms        1718,750 ms
-Newtonsoft.Json-6.0.5.17707                      1306,644 ms        1687,488 ms
-ServiceStack.Text-4.0.31.0                       2332,023 ms        3283,196 ms
+Jil-2.1.0                                        1465,818 ms        1658,197 ms
+JsonToolkit-4.3.832.1632                         1785,152 ms        1401,433 ms
+Nancy-0.23.2.0                                   3059,567 ms        5235,350 ms
+NetJSON-1.0.4.2                                  1357,540 ms        1184,607 ms
+Newtonsoft.Json-6.0.5.17707                      1280,285 ms        1478,102 ms
+ServiceStack.Text-4.0.31.0                       1699,218 ms        2842,224 ms
 -------------------------------------------------------------------------------
 
 
@@ -59,13 +59,29 @@ Requirements: none
 -------------------------------------------------------------------------------
 Name                                           Serialization    Deserialization
 -------------------------------------------------------------------------------
-fastJSON-2.1.3.0                                  152,337 ms         619,131 ms
-Jil-2.1.0                                          60,542 ms         113,275 ms
-JsonToolkit-4.3.832.1632                          512,696 ms         507,774 ms
-Nancy-0.23.2.0                                   1138,723 ms        1572,103 ms
-NetJSON-1.0.4.2                                    35,159 ms         109,377 ms
-Newtonsoft.Json-6.0.5.17707                       228,532 ms         336,918 ms
-ServiceStack.Text-4.0.31.0                        136,697 ms         333,983 ms
+fastJSON-2.1.3.0                                  268,566 ms         991,465 ms
+Jil-2.1.0                                         144,733 ms         227,659 ms
+JsonToolkit-4.3.832.1632                          928,742 ms         915,055 ms
+Nancy-0.23.2.0                                   2023,480 ms        2869,586 ms
+NetJSON-1.0.4.2                                   103,806 ms         181,627 ms
+Newtonsoft.Json-6.0.5.17707                       452,313 ms         579,301 ms
+ServiceStack.Text-4.0.31.0                        235,566 ms         627,139 ms
+-------------------------------------------------------------------------------
+
+
+Case: Number
+Requirements: none
+
+-------------------------------------------------------------------------------
+Name                                           Serialization    Deserialization
+-------------------------------------------------------------------------------
+fastJSON-2.1.3.0                                   FAILED             FAILED
+Jil-2.1.0                                         105,586 ms         333,004 ms
+JsonToolkit-4.3.832.1632                          595,839 ms         925,256 ms
+Nancy-0.23.2.0                                   1587,954 ms        2674,003 ms
+NetJSON-1.0.4.2                                    47,914 ms         213,111 ms
+Newtonsoft.Json-6.0.5.17707                       274,384 ms        1447,482 ms
+ServiceStack.Text-4.0.31.0                        158,535 ms         721,163 ms
 -------------------------------------------------------------------------------
 
 
@@ -75,13 +91,29 @@ Requirements: none
 -------------------------------------------------------------------------------
 Name                                           Serialization    Deserialization
 -------------------------------------------------------------------------------
-fastJSON-2.1.3.0                                   99,613 ms         328,148 ms
-Jil-2.1.0                                          95,697 ms         144,533 ms
-JsonToolkit-4.3.832.1632                          394,531 ms         369,140 ms
-Nancy-0.23.2.0                                    733,402 ms        1166,009 ms
-NetJSON-1.0.4.2                                    68,361 ms         137,695 ms
-Newtonsoft.Json-6.0.5.17707                       151,362 ms         254,880 ms
-ServiceStack.Text-4.0.31.0                        135,741 ms         211,913 ms
+fastJSON-2.1.3.0                                  187,501 ms         621,147 ms
+Jil-2.1.0                                         195,307 ms         284,252 ms
+JsonToolkit-4.3.832.1632                          802,862 ms         678,104 ms
+Nancy-0.23.2.0                                   1327,218 ms        2168,980 ms
+NetJSON-1.0.4.2                                   133,964 ms         232,402 ms
+Newtonsoft.Json-6.0.5.17707                       320,108 ms         408,205 ms
+ServiceStack.Text-4.0.31.0                        277,526 ms         405,376 ms
+-------------------------------------------------------------------------------
+
+
+Case: Twitter
+Requirements: none
+
+-------------------------------------------------------------------------------
+Name                                           Serialization    Deserialization
+-------------------------------------------------------------------------------
+fastJSON-2.1.3.0                                   FAILED             FAILED
+Jil-2.1.0                                          FAILED           2094,704 ms
+JsonToolkit-4.3.832.1632                         4620,202 ms        4275,443 ms
+Nancy-0.23.2.0                                   8711,037 ms       12566,481 ms
+NetJSON-1.0.4.2                                   621,436 ms        1252,910 ms
+Newtonsoft.Json-6.0.5.17707                      2251,015 ms        2991,212 ms
+ServiceStack.Text-4.0.31.0                       1521,519 ms        6480,491 ms
 -------------------------------------------------------------------------------
 
 
@@ -91,13 +123,13 @@ Requirements: none
 -------------------------------------------------------------------------------
 Name                                           Serialization    Deserialization
 -------------------------------------------------------------------------------
-fastJSON-2.1.3.0                                  145,506 ms         542,966 ms
-Jil-2.1.0                                          58,597 ms         155,271 ms
-JsonToolkit-4.3.832.1632                          524,414 ms         611,320 ms
-Nancy-0.23.2.0                                   1180,662 ms        1870,119 ms
-NetJSON-1.0.4.2                                    45,885 ms         149,424 ms
-Newtonsoft.Json-6.0.5.17707                       209,987 ms         339,841 ms
-ServiceStack.Text-4.0.31.0                        203,874 ms         443,389 ms
+fastJSON-2.1.3.0                                  266,613 ms         943,348 ms
+Jil-2.1.0                                         126,649 ms         296,022 ms
+JsonToolkit-4.3.832.1632                         1026,353 ms        1082,058 ms
+Nancy-0.23.2.0                                   2232,023 ms        3261,780 ms
+NetJSON-1.0.4.2                                    82,174 ms         247,814 ms
+Newtonsoft.Json-6.0.5.17707                       368,282 ms         559,748 ms
+ServiceStack.Text-4.0.31.0                        317,365 ms         840,852 ms
 -------------------------------------------------------------------------------
 
 
@@ -107,13 +139,13 @@ Requirements: none
 -------------------------------------------------------------------------------
 Name                                           Serialization    Deserialization
 -------------------------------------------------------------------------------
-fastJSON-2.1.3.0                                  107,421 ms         446,286 ms
-Jil-2.1.0                                          54,687 ms         124,023 ms
-JsonToolkit-4.3.832.1632                          469,721 ms         492,191 ms
-Nancy-0.23.2.0                                    939,460 ms        1497,076 ms
-NetJSON-1.0.4.2                                    42,011 ms         132,865 ms
-Newtonsoft.Json-6.0.5.17707                       169,920 ms         252,935 ms
-ServiceStack.Text-4.0.31.0                        128,907 ms         318,362 ms
+fastJSON-2.1.3.0                                  217,008 ms         790,025 ms
+Jil-2.1.0                                         131,054 ms         217,778 ms
+JsonToolkit-4.3.832.1632                          865,269 ms         814,198 ms
+Nancy-0.23.2.0                                   1639,850 ms        2692,532 ms
+NetJSON-1.0.4.2                                    77,210 ms         223,862 ms
+Newtonsoft.Json-6.0.5.17707                       356,500 ms         413,280 ms
+ServiceStack.Text-4.0.31.0                        234,597 ms         574,230 ms
 -------------------------------------------------------------------------------
 
 
@@ -124,4 +156,11 @@ Remarks:
 nce.Resources.Job[]'.
 # Unable to cast object of type 'System.Object[]' to type 'Quality.Json.Performa
 nce.Resources.Job[]'.
+# Unable to cast object of type 'System.Object[]' to type 'Quality.Json.Performa
+nce.Resources.Number[]'.
+# Unable to cast object of type 'System.Object[]' to type 'Quality.Json.Performa
+nce.Resources.Number[]'.
+# Object must implement IConvertible.
+# Object must implement IConvertible.
+# Object reference not set to an instance of an object.
 ````
