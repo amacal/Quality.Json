@@ -27,5 +27,9 @@ namespace Quality.Json.Performance.Results
         {
             return "INVALID   ";
         }
+
+        public void Visit(IResultDataVisitor visitor)
+        {
+        }
     }
 }

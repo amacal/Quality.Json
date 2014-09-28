@@ -20,5 +20,9 @@ namespace Quality.Json.Performance.Results
         {
             return "-- --- --";
         }
+
+        public void Visit(IResultDataVisitor visitor)
+        {
+        }
     }
 }

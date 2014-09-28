@@ -43,12 +43,7 @@ namespace Quality.Json.Performance.Domain
                     {
                         foreach (IProcedure procedure in this.procedures)
                         {
-                            suit.AddInstance(new TestInstance
-                            {
-                                Case = @case,
-                                Subject = subject,
-                                Procedure = procedure,
-                            });
+                            suit.AddInstance(new Instance(@case, subject, procedure));
                         }
                     }
                 }

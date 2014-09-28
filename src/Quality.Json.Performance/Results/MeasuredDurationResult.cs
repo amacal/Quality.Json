@@ -27,5 +27,10 @@ namespace Quality.Json.Performance.Results
         {
             return this.duration.TotalMilliseconds.ToString("F3") + " ms";
         }
+
+        public void Visit(IResultDataVisitor visitor)
+        {
+            visitor.Visit(this.duration);
+        }
     }
 }

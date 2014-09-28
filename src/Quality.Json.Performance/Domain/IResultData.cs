@@ -7,5 +7,7 @@
         IRemark GetRemark();
 
         string Describe();
+
+        void Visit(IResultDataVisitor visitor);
     }
 }
