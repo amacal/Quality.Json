@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Quality.Json.Performance.Domain
 {
-    internal class Report : IReport
+    internal class Report : IReport, IReportInfo
     {
         private readonly List<IResult> items;
 
@@ -17,6 +17,11 @@ namespace Quality.Json.Performance.Domain
         public void AddResult(IResult item)
         {
             this.items.Add(item);
+        }
+
+        public void Print(IPrinter printer)
+        {
+            printer.Print(this);
         }
 
         public IEnumerable<ICaseInfo> GetCases()

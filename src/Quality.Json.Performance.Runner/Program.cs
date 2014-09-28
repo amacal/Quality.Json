@@ -38,10 +38,7 @@ namespace Quality.Json.Performance.Runner
             ITestSuit suit = builder.Build();
             IReport report = suit.Execute();
 
-            TextWriter output = Console.Out;
-            IReportPrinter printer = new PlanTextPrinter(Console.WindowWidth - 1);
-
-            printer.Print(report, output);
+            report.Print(new ConsolePrinter());
             Console.ReadKey();
         }
     }
