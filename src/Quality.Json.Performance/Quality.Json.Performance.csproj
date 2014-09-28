@@ -170,15 +170,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Number.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="\\VBOXSVR\Adrian_Macal\Desktop\Twitter.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <Link>Resources\Twitter.json</Link>
-    </Content>
+    <Content Include="Resources\Twitter.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
