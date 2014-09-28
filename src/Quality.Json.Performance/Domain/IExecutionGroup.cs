@@ -2,6 +2,6 @@
 {
     public interface IExecutionGroup
     {
-        IResult[] Execute(ITimes times);
+        IResult[] Execute(ITimes times, IParallelism parallelism);
     }
 }

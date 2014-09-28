@@ -19,13 +19,13 @@ namespace Quality.Json.Performance.Domain
             this.items.Add(instance);
         }
 
-        public IReport Execute(ITimes times)
+        public IReport Execute(ITimes times, IParallelism parallelism)
         {
             Report report = new Report();
 
             foreach (IExecutionGroup @group in this.GroupInstances())
             {
-                foreach (IResult result in @group.Execute(times))
+                foreach (IResult result in @group.Execute(times, parallelism))
                 {
                     report.AddResult(result);
                 }
@@ -52,14 +52,16 @@ namespace Quality.Json.Performance.Domain
                 this.instances = instances;
             }
 
-            public IResult[] Execute(ITimes times)
+            public IResult[] Execute(ITimes times, IParallelism parallelism)
             {
+                IInstance[] input = this.instances;
+
                 while (true)
                 {
                     Log.Information("Executing {Case} {Times}", this.@case.Name, times.Describe());
 
                     MinDurationVisitor visitor = new MinDurationVisitor();
-                    IResult[] results = instances.Select(x => x.Execute(times)).ToArray();
+                    IResult[] results = parallelism.Execute(input, times);
 
                     foreach (IResult result in results)
                     {
@@ -73,7 +75,13 @@ namespace Quality.Json.Performance.Domain
 
                     double ceiling = Math.Ceiling(1.0d / visitor.GetValue().TotalSeconds);
                     times = times.Multiply(Math.Max(2, (int)ceiling));
+                    input = OptimizeOrder(results);
                 }
+            }
+
+            private IInstance[] OptimizeOrder(IResult[] results)
+            {
+                return this.instances;
             }
         }
 

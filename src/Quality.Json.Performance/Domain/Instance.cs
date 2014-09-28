@@ -28,11 +28,13 @@ namespace Quality.Json.Performance.Domain
 
         public IResult Execute(ITimes times)
         {
-            Log.Debug("Creating AppDomain for {Case}, {Subject}, {Procedure}", this.@case.Name, this.subject.Name, this.procedure.Name);
+            Log.Debug("New AppDomain {Subject}/{Procedure}", this.subject.Name, this.procedure.Name);
             AppDomain domain = AppDomain.CreateDomain(String.Join("-", this.@case.Name, this.subject.Name, this.procedure.Name));
 
             try
             {
+                Log.Information("Executing {Subject}/{Procedure} on thread {ThreadId}", this.subject.Name, this.procedure.Name);
+
                 Proxy proxy = (Proxy)domain.CreateInstanceFromAndUnwrap(this.GetType().Assembly.CodeBase, typeof(Proxy).FullName);
                 IResultData data = proxy.Execute(this.@case, this.procedure, this.subject, times);
                 IResult result = new Result(this.@case, this.procedure, this.subject, data);

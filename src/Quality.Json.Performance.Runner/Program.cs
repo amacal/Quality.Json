@@ -34,8 +34,11 @@ namespace Quality.Json.Performance.Runner
 
         private static void ExecuteTests()
         {
+            ITimes times = new Times(100);
+            IParallelism parallelism = new Parallelism(Math.Max(Environment.ProcessorCount - 1, 1));
+
             ITestSuit suit = Program.CreateSuit();
-            IReport report = suit.Execute(new Times(100));
+            IReport report = suit.Execute(times, parallelism);
 
             report.Print(new ConsolePrinter());
         }
