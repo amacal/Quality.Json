@@ -42,8 +42,8 @@ namespace Quality.Json.Performance.Procedures
             T instance = resource.GetInstance();
             ICompareLogic comparer = new CompareLogic(new ComparisonConfig { MaxDifferences = 100 });
 
-            string text = subject.Serialize<T>(instance);
-            T deserialized = subject.Deserialize<T>(text);
+            IPayload payload = subject.Serialize<T>(instance);
+            T deserialized = subject.Deserialize<T>(payload);
 
             IResultData result = null;
             ComparisonResult comparision = comparer.Compare(instance, deserialized);

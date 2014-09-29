@@ -39,11 +39,11 @@ namespace Quality.Json.Performance.Procedures
         private IResultData Validate<T>(IResource<T> resource, ISubject subject)
             where T : class
         {
-            string text = resource.GetText();
+            IPayload payload = subject.Create<T>(resource);
             T template = resource.GetInstance();
 
             ICompareLogic comparer = new CompareLogic(new ComparisonConfig { MaxDifferences = 100 });
-            T deserialized = subject.Deserialize<T>(text);
+            T deserialized = subject.Deserialize<T>(payload);
 
             IResultData result = null;
             ComparisonResult comparision = comparer.Compare(template, deserialized);
@@ -60,9 +60,9 @@ namespace Quality.Json.Performance.Procedures
             where T : class
         {
             times = resource.Multiply(times);
-            string text = resource.GetText();
+            IPayload payload = subject.Create<T>(resource);
 
-            IRoutine routine = new Routine<T>(subject, text);
+            IRoutine routine = new Routine<T>(subject, payload);
             DateTime started = DateTime.Now;
 
             times.Execute(routine);
@@ -73,17 +73,17 @@ namespace Quality.Json.Performance.Procedures
             where T : class
         {
             private readonly ISubject subject;
-            private readonly string text;
+            private readonly IPayload payload;
 
-            public Routine(ISubject subject, string text)
+            public Routine(ISubject subject, IPayload payload)
             {
                 this.subject = subject;
-                this.text = text;
+                this.payload = payload;
             }
 
             public void Execute()
             {
-                this.subject.Deserialize<T>(this.text);
+                this.subject.Deserialize<T>(this.payload);
             }
         }
     }

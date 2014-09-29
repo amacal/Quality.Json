@@ -80,7 +80,9 @@
     <Compile Include="Domain\ICaseInfo.cs" />
     <Compile Include="Domain\IDescriptive.cs" />
     <Compile Include="Domain\IExecutionGroup.cs" />
+    <Compile Include="Domain\IJsonImplementation.cs" />
     <Compile Include="Domain\IParallelism.cs" />
+    <Compile Include="Domain\IPayload.cs" />
     <Compile Include="Domain\IReportInfo.cs" />
     <Compile Include="Domain\IRequirement.cs" />
     <Compile Include="Domain\IRemark.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Domain\ITimes.cs" />
     <Compile Include="Domain\Parallelism.cs" />
     <Compile Include="Domain\Times.cs" />
+    <Compile Include="Payloads\JsonPayload.cs" />
     <Compile Include="Printers\ConsolePrinter.cs" />
     <Compile Include="Requirements\CaseInsensitiveRequirement.cs" />
     <Compile Include="Printers\PlainTextPrinter.cs" />

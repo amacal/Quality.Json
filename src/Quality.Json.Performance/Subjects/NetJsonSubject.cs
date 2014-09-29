@@ -1,11 +1,12 @@
 ﻿using Quality.Json.Performance.Domain;
+using Quality.Json.Performance.Payloads;
 using System;
 using System.Diagnostics;
 
 namespace Quality.Json.Performance.Subjects
 {
     [Serializable]
-    public class NetJsonSubject : ISubject
+    public class NetJsonSubject : ISubject, IJsonImplementation
     {
         static NetJsonSubject()
         {
@@ -27,10 +28,22 @@ namespace Quality.Json.Performance.Subjects
             return true;
         }
 
-        public string Serialize<T>(T instance)
+        public IPayload Create<T>(IResource<T> resource)
             where T : class
         {
-            return NetJSON.NetJSON.Serialize<T>(instance);
+            return new JsonPayload(resource.GetText());
+        }
+
+        public IPayload Serialize<T>(T instance)
+            where T : class
+        {
+            return new JsonPayload(NetJSON.NetJSON.Serialize<T>(instance));
+        }
+
+        public T Deserialize<T>(IPayload payload)
+            where T : class
+        {
+            return payload.Deserialize<T>(this);
         }
 
         public T Deserialize<T>(string data)
