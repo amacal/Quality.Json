@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Express 2013 for Windows Desktop
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quality.Json.Performance", "Quality.Json.Performance\Quality.Json.Performance.csproj", "{A7E1269B-1931-4627-A486-7100D58EA00E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quality.Json.Performance.Runner", "Quality.Json.Performance.Runner\Quality.Json.Performance.Runner.csproj", "{21D32409-906B-4CC2-AF0A-2F69A0B6C49D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quality.Json.Performance", "Quality.Json.Performance\Quality.Json.Performance.csproj", "{A7E1269B-1931-4627-A486-7100D58EA00E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +23,6 @@ Global
 		{21D32409-906B-4CC2-AF0A-2F69A0B6C49D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
+		HideSolutionNode = TRUE
 	EndGlobalSection
 EndGlobal

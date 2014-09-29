@@ -45,12 +45,18 @@
     <Reference Include="Nancy">
       <HintPath>..\..\lib\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="NetJSON, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="NetJSON, Version=1.0.4.2, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\NetJSON.1.0.4\lib\net40\NetJSON.dll</HintPath>
+      <HintPath>..\..\lib\NetJSON.1.0.4.2\lib\net40\NetJSON.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\lib\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog">
+      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx">
+      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.FullNetFx.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text">
       <HintPath>..\..\lib\ServiceStack.Text.4.0.31\lib\net40\ServiceStack.Text.dll</HintPath>
@@ -65,25 +71,40 @@
   <ItemGroup>
     <Compile Include="Cases\CongressCase.cs" />
     <Compile Include="Cases\GlossaryCase.cs" />
+    <Compile Include="Cases\JobsCase.cs" />
     <Compile Include="Cases\MenuCase.cs" />
+    <Compile Include="Cases\NumberCase.cs" />
     <Compile Include="Cases\RowCase.cs" />
+    <Compile Include="Cases\TwitterCase.cs" />
     <Compile Include="Cases\WeatherCase.cs" />
     <Compile Include="Domain\ICaseInfo.cs" />
     <Compile Include="Domain\IDescriptive.cs" />
+    <Compile Include="Domain\IExecutionGroup.cs" />
+    <Compile Include="Domain\IParallelism.cs" />
+    <Compile Include="Domain\IReportInfo.cs" />
     <Compile Include="Domain\IRequirement.cs" />
     <Compile Include="Domain\IRemark.cs" />
     <Compile Include="Domain\IReport.cs" />
-    <Compile Include="Domain\IReportPrinter.cs" />
+    <Compile Include="Domain\IPrinter.cs" />
+    <Compile Include="Domain\IResultDataVisitor.cs" />
+    <Compile Include="Domain\IRoutine.cs" />
     <Compile Include="Domain\ISubjectInfo.cs" />
-    <Compile Include="Domain\ITestInstance.cs" />
+    <Compile Include="Domain\IInstance.cs" />
     <Compile Include="Domain\ITestSuit.cs" />
     <Compile Include="Domain\ITestSuitBuilder.cs" />
+    <Compile Include="Domain\ITimes.cs" />
+    <Compile Include="Domain\Parallelism.cs" />
+    <Compile Include="Domain\Times.cs" />
+    <Compile Include="Printers\ConsolePrinter.cs" />
     <Compile Include="Requirements\CaseInsensitiveRequirement.cs" />
-    <Compile Include="Printers\PlanTextPrinter.cs" />
+    <Compile Include="Printers\PlainTextPrinter.cs" />
     <Compile Include="Domain\TestSuitBuilder.cs" />
     <Compile Include="Resources\Congress.cs" />
+    <Compile Include="Resources\Jobs.cs" />
+    <Compile Include="Resources\Number.cs" />
     <Compile Include="Resources\Row.cs" />
     <Compile Include="Cases\WidgetCase.cs" />
+    <Compile Include="Resources\Twitter.cs" />
     <Compile Include="Results\MeasuredDurationResult.cs" />
     <Compile Include="Results\FailedByExceptionResult.cs" />
     <Compile Include="Domain\ICase.cs" />
@@ -94,7 +115,7 @@
     <Compile Include="Domain\ISubject.cs" />
     <Compile Include="Domain\Result.cs" />
     <Compile Include="Domain\Report.cs" />
-    <Compile Include="Domain\TestInstance.cs" />
+    <Compile Include="Domain\Instance.cs" />
     <Compile Include="Domain\TestSuit.cs" />
     <Compile Include="Results\InvalidComparisionResult.cs" />
     <Compile Include="Procedures\DeserializeProcedure.cs" />
@@ -137,6 +158,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Congress.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Jobs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Number.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Twitter.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

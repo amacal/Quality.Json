@@ -24,9 +24,9 @@ namespace Quality.Json.Performance.Cases
             yield break;
         }
 
-        public IResultData Execute(IProcedure procedure, ISubject subject)
+        public IResultData Execute(IProcedure procedure, ISubject subject, ITimes times)
         {
-            return procedure.Process(this, subject);
+            return procedure.Process(this, subject, times);
         }
 
         public string GetText()
@@ -39,9 +39,9 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllBytes(@"Resources\Row.json");
         }
 
-        public int Multiply(int times)
+        public ITimes Multiply(ITimes times)
         {
-            return times * 100;
+            return times.Multiply(100);
         }
 
         public Row GetInstance()
@@ -67,11 +67,11 @@ namespace Quality.Json.Performance.Cases
                 latitude = 49.911697,
                 longitude = -6.562665,
                 tags = new string[] { "incididunt", "laborum", "proident", "quis", "do", "dolor", "reprehenderit" },
-                friends = new[] 
-                { 
-                    new Row.Friend{ id = 0, name = "Maryann Rocha"},
-                    new Row.Friend{ id = 1, name = "Stevens Luna"},
-                    new Row.Friend{ id = 2, name = "Sanders Cantu"}
+                friends = new[]
+                {
+                    new Row.Friend { id = 0, name = "Maryann Rocha" },
+                    new Row.Friend { id = 1, name = "Stevens Luna" },
+                    new Row.Friend { id = 2, name = "Sanders Cantu" }
                 },
                 greeting = "Hello, Craft Arnold! You have 3 unread messages.",
                 favoriteFruit = "banana"

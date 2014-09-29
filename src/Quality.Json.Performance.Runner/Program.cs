@@ -1,8 +1,12 @@
-﻿using Quality.Json.Performance.Cases;
+﻿using System.Diagnostics;
+using Quality.Json.Performance.Cases;
 using Quality.Json.Performance.Domain;
 using Quality.Json.Performance.Printers;
 using Quality.Json.Performance.Procedures;
 using Quality.Json.Performance.Subjects;
+using Serilog;
+using Serilog.Enrichers;
+using Serilog.Events;
 using System;
 using System.IO;
 
@@ -12,6 +16,42 @@ namespace Quality.Json.Performance.Runner
     {
         public static void Main()
         {
+            Program.SetProcessPriority();
+            Program.InitializeLogger();
+            Program.ExecuteTests();
+
+            Console.ReadKey();
+        }
+
+        private static void SetProcessPriority()
+        {
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+        }
+
+        private static void InitializeLogger()
+        {
+            Log.Logger =
+                new LoggerConfiguration()
+                    .MinimumLevel.Debug()
+                    .Enrich.WithThreadId()
+                    .WriteTo.Console(LogEventLevel.Information)
+                    .WriteTo.File("Quality.Json.Performance.Runner.txt", LogEventLevel.Debug)
+                    .CreateLogger();
+        }
+
+        private static void ExecuteTests()
+        {
+            ITimes times = new Times(100);
+            IParallelism parallelism = new Parallelism(Math.Max(Environment.ProcessorCount - 1, 1));
+
+            ITestSuit suit = Program.CreateSuit();
+            IReport report = suit.Execute(times, parallelism);
+
+            report.Print(new ConsolePrinter());
+        }
+
+        private static ITestSuit CreateSuit()
+        {
             ITestSuitBuilder builder = new TestSuitBuilder();
 
             builder.AddCase(new MenuCase());
@@ -20,6 +60,9 @@ namespace Quality.Json.Performance.Runner
             builder.AddCase(new RowCase());
             builder.AddCase(new WeatherCase());
             builder.AddCase(new CongressCase());
+            builder.AddCase(new JobsCase());
+            builder.AddCase(new NumberCase());
+            builder.AddCase(new TwitterCase());
 
             builder.AddSubject(new NewtonsoftSubject());
             builder.AddSubject(new ServiceStackSubject());
@@ -29,17 +72,10 @@ namespace Quality.Json.Performance.Runner
             builder.AddSubject(new JilSubject());
             builder.AddSubject(new FastJsonSubject());
 
-            builder.AddProcedure(new SerializeProcedure(100));
-            builder.AddProcedure(new DeserializeProcedure(100));
+            builder.AddProcedure(new SerializeProcedure());
+            builder.AddProcedure(new DeserializeProcedure());
 
-            ITestSuit suit = builder.Build();
-            IReport report = suit.Execute();
-
-            TextWriter output = Console.Out;
-            IReportPrinter printer = new PlanTextPrinter(Console.WindowWidth - 1);
-
-            printer.Print(report, output);
-            Console.ReadKey();
+            return builder.Build();
         }
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface ITestSuit
     {
-        IReport Execute();
+        IReport Execute(ITimes times, IParallelism parallelism);
     }
 }

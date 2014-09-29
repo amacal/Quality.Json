@@ -6,6 +6,8 @@
 
         IRemark GetRemark();
 
-        string ToString();
+        string Describe();
+
+        void Visit(IResultDataVisitor visitor);
     }
 }

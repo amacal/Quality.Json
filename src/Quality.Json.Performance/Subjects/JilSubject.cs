@@ -25,13 +25,13 @@ namespace Quality.Json.Performance.Subjects
         }
 
         public string Serialize<T>(T instance)
-            where T : class, new()
+            where T : class
         {
             return JSON.Serialize(instance);
         }
 
         public T Deserialize<T>(string data)
-            where T : class, new()
+            where T : class
         {
             return JSON.Deserialize<T>(data);
         }

@@ -16,9 +16,13 @@ namespace Quality.Json.Performance.Results
             throw new InvalidOperationException("The result has no remarks. You should use HasRemarks method to determine if this method should be called.");
         }
 
-        public override string ToString()
+        public string Describe()
         {
             return "-- --- --";
+        }
+
+        public void Visit(IResultDataVisitor visitor)
+        {
         }
     }
 }
