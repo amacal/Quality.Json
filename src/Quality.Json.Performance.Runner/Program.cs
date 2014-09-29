@@ -1,4 +1,5 @@
-﻿using Quality.Json.Performance.Cases;
+﻿using System.Diagnostics;
+using Quality.Json.Performance.Cases;
 using Quality.Json.Performance.Domain;
 using Quality.Json.Performance.Printers;
 using Quality.Json.Performance.Procedures;
@@ -15,10 +16,16 @@ namespace Quality.Json.Performance.Runner
     {
         public static void Main()
         {
+            Program.SetProcessPriority();
             Program.InitializeLogger();
             Program.ExecuteTests();
 
             Console.ReadKey();
+        }
+
+        private static void SetProcessPriority()
+        {
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
         }
 
         private static void InitializeLogger()
