@@ -52,6 +52,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\lib\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\lib\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
+    </Reference>
     <Reference Include="Serilog">
       <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.dll</HintPath>
     </Reference>
@@ -67,6 +70,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cases\CongressCase.cs" />
@@ -83,6 +87,7 @@
     <Compile Include="Domain\IJsonImplementation.cs" />
     <Compile Include="Domain\IParallelism.cs" />
     <Compile Include="Domain\IPayload.cs" />
+    <Compile Include="Domain\IProtobufImplementation.cs" />
     <Compile Include="Domain\IReportInfo.cs" />
     <Compile Include="Domain\IRequirement.cs" />
     <Compile Include="Domain\IRemark.cs" />
@@ -98,10 +103,13 @@
     <Compile Include="Domain\Parallelism.cs" />
     <Compile Include="Domain\Times.cs" />
     <Compile Include="Payloads\JsonPayload.cs" />
+    <Compile Include="Payloads\ProtobufPayload.cs" />
     <Compile Include="Printers\ConsolePrinter.cs" />
     <Compile Include="Requirements\CaseInsensitiveRequirement.cs" />
     <Compile Include="Printers\PlainTextPrinter.cs" />
     <Compile Include="Domain\TestSuitBuilder.cs" />
+    <Compile Include="Requirements\EmptyArrayRequirement.cs" />
+    <Compile Include="Requirements\JaggedArrayRequirement.cs" />
     <Compile Include="Resources\Congress.cs" />
     <Compile Include="Resources\Jobs.cs" />
     <Compile Include="Resources\Number.cs" />
@@ -136,6 +144,7 @@
     <Compile Include="Subjects\NancySubject.cs" />
     <Compile Include="Subjects\NetJsonSubject.cs" />
     <Compile Include="Subjects\NewtonsoftSubject.cs" />
+    <Compile Include="Subjects\ProtobufSubject.cs" />
     <Compile Include="Subjects\ServiceStackSubject.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +185,31 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\Twitter.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Glossary.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Menu.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Row.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Weather.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Widget.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Jobs.bin">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Number.bin">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

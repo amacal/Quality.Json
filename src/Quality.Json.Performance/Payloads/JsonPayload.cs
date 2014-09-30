@@ -1,4 +1,6 @@
 ﻿using Quality.Json.Performance.Domain;
+using System;
+using System.IO;
 
 namespace Quality.Json.Performance.Payloads
 {
@@ -15,6 +17,17 @@ namespace Quality.Json.Performance.Payloads
             where T : class
         {
             return implementation.Deserialize<T>(this.data);
+        }
+
+        public T Deserialize<T>(IProtobufImplementation implementation)
+            where T : class
+        {
+            throw new NotSupportedException();
+        }
+
+        public void SaveAs(string path)
+        {
+            File.WriteAllText(path, this.data);
         }
     }
 }

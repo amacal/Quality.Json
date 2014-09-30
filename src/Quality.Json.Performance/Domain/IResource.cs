@@ -1,11 +1,13 @@
-﻿namespace Quality.Json.Performance.Domain
+﻿using System.IO;
+
+namespace Quality.Json.Performance.Domain
 {
     public interface IResource<T>
         where T : class
     {
         string GetText();
 
-        byte[] GetData();
+        MemoryStream GetData();
 
         T GetInstance();
 

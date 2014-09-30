@@ -1,0 +1,7 @@
+
+°
+on/
+Sample Konfabulator Widgetmain_windowô ô$
+Images/Sun.pngsun1ú ú*center"S
+
+Click Here$bold"text1(ú0d:centerB)sun1.opacity = (sun1.opacity / 100) * 90;

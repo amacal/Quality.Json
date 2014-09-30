@@ -34,9 +34,9 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllText(@"Resources\Row.json");
         }
 
-        public byte[] GetData()
+        public MemoryStream GetData()
         {
-            return File.ReadAllBytes(@"Resources\Row.json");
+            return new MemoryStream(File.ReadAllBytes(@"Resources\Row.bin"));
         }
 
         public ITimes Multiply(ITimes times)
