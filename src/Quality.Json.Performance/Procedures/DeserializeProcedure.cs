@@ -18,6 +18,11 @@ namespace Quality.Json.Performance.Procedures
             get { return null; }
         }
 
+        public bool CanHandle(IRequirement requirement)
+        {
+            return true;
+        }
+
         public IResultData Process<T>(IResource<T> resource, ISubject subject, ITimes times)
             where T : class
         {

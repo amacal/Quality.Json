@@ -41,7 +41,7 @@ namespace Quality.Json.Performance.Cases
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(100);
+            return times.Multiply(10000);
         }
 
         public Row GetInstance()

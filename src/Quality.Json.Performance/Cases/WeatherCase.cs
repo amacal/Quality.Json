@@ -41,7 +41,7 @@ namespace Quality.Json.Performance.Cases
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(50);
+            return times.Multiply(5000);
         }
 
         public WeatherContainer GetInstance()

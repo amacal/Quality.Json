@@ -41,7 +41,7 @@ namespace Quality.Json.Performance.Runner
 
         private static void ExecuteTests()
         {
-            ITimes times = new Times(100);
+            ITimes times = new Times(1);
             IParallelism parallelism = new Parallelism(Math.Max(Environment.ProcessorCount - 1, 1));
 
             ITestSuit suit = Program.CreateSuit();
@@ -63,6 +63,7 @@ namespace Quality.Json.Performance.Runner
             builder.AddCase(new JobsCase());
             builder.AddCase(new NumberCase());
             builder.AddCase(new TwitterCase());
+            builder.AddCase(new LargeCase());
 
             builder.AddSubject(new NewtonsoftSubject());
             builder.AddSubject(new ServiceStackSubject());

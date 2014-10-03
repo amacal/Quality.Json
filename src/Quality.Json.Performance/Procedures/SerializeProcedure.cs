@@ -1,5 +1,6 @@
 ﻿using KellermanSoftware.CompareNetObjects;
 using Quality.Json.Performance.Domain;
+using Quality.Json.Performance.Requirements;
 using Quality.Json.Performance.Results;
 using System;
 
@@ -16,6 +17,11 @@ namespace Quality.Json.Performance.Procedures
         public string Description
         {
             get { return null; }
+        }
+
+        public bool CanHandle(IRequirement requirement)
+        {
+            return requirement is DeserializeOnlyRequirement == false;
         }
 
         public IResultData Process<T>(IResource<T> resource, ISubject subject, ITimes times)

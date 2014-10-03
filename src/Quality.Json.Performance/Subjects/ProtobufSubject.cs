@@ -24,7 +24,8 @@ namespace Quality.Json.Performance.Subjects
         public bool CanHandle(IRequirement requirement)
         {
             return requirement is JaggedArrayRequirement == false
-                && requirement is EmptyArrayRequirement == false;
+                && requirement is EmptyArrayRequirement == false
+                && requirement is JsonOnlyRequirement == false;
         }
 
         public IPayload Create<T>(IResource<T> resource)

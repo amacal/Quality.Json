@@ -42,7 +42,7 @@ namespace Quality.Json.Performance.Cases
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(200);
+            return times.Multiply(20000);
         }
 
         public GlossaryContainer GetInstance()
