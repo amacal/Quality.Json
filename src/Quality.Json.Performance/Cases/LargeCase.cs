@@ -1,6 +1,7 @@
 ﻿using Quality.Json.Performance.Domain;
 using Quality.Json.Performance.Requirements;
 using Quality.Json.Performance.Resources;
+using SevenZip.SDK.Compress.LZMA;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -33,12 +34,39 @@ namespace Quality.Json.Performance.Cases
 
         public string GetText()
         {
-            return File.ReadAllText(@"Resources\Large.json");
+            using (MemoryStream memory = new MemoryStream())
+            {
+                using (Stream input = File.OpenRead(@"Resources\Large.7z"))
+                {
+                    Decoder coder = new Decoder();
+
+                    // Read the decoder properties
+                    byte[] properties = new byte[5];
+                    input.Read(properties, 0, 5);
+
+                    // Read in the decompress file size.
+                    byte[] fileLengthBytes = new byte[8];
+                    input.Read(fileLengthBytes, 0, 8);
+                    long fileLength = BitConverter.ToInt64(fileLengthBytes, 0);
+
+                    coder.SetDecoderProperties(properties);
+                    coder.Code(input, memory, input.Length, fileLength, null);
+
+                    memory.Flush();
+                }
+
+                memory.Seek(0, SeekOrigin.Begin);
+
+                using (TextReader reader = new StreamReader(memory))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
         }
 
         public MemoryStream GetData()
         {
-            return new MemoryStream(File.ReadAllBytes(@"Resources\Large.bin"));
+            throw new NotSupportedException();
         }
 
         public ITimes Multiply(ITimes times)

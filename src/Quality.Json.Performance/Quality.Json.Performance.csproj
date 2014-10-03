@@ -67,6 +67,9 @@
     <Reference Include="ServiceStack.Text">
       <HintPath>..\..\lib\ServiceStack.Text.4.0.31\lib\net40\ServiceStack.Text.dll</HintPath>
     </Reference>
+    <Reference Include="SevenZip.SDK">
+      <HintPath>..\..\lib\SevenZip.SDK.1.0.0\lib\SevenZip.SDK.dll</HintPath>
+    </Reference>
     <Reference Include="Sigil">
       <HintPath>..\..\lib\Sigil.4.2.2\lib\net45\Sigil.dll</HintPath>
     </Reference>
@@ -156,6 +159,9 @@
     <Compile Include="Subjects\ServiceStackSubject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Large.7z">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\Large.ascii">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -224,11 +230,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Resources\Number.bin">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Large.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
