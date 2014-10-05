@@ -68,10 +68,12 @@ namespace Quality.Json.Performance.Procedures
             IPayload payload = subject.Create<T>(resource);
 
             IRoutine routine = new Routine<T>(subject, payload);
-            DateTime started = DateTime.Now;
+            TimeSpan started = AppDomain.CurrentDomain.MonitoringTotalProcessorTime;
 
             times.Execute(routine);
-            return new MeasuredDurationResult(DateTime.Now - started);
+            TimeSpan ended = AppDomain.CurrentDomain.MonitoringTotalProcessorTime;
+
+            return new MeasuredDurationResult(ended - started);
         }
 
         private class Routine<T> : IRoutine
