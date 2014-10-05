@@ -1,4 +1,5 @@
 ﻿using Quality.Json.Performance.Domain;
+using Quality.Json.Performance.Requirements;
 using Quality.Json.Performance.Resources;
 using System;
 using System.Collections.Generic;
@@ -21,7 +22,7 @@ namespace Quality.Json.Performance.Cases
 
         public IEnumerable<IRequirement> GetRequirements()
         {
-            yield break;
+            yield return new EmptyArrayRequirement();
         }
 
         public IResultData Execute(IProcedure procedure, ISubject subject, ITimes times)
@@ -34,14 +35,14 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllText(@"Resources\Congress.json");
         }
 
-        public byte[] GetData()
+        public MemoryStream GetData()
         {
-            return File.ReadAllBytes(@"Resources\Congress.json");
+            return new MemoryStream(File.ReadAllBytes(@"Resources\Congress.bin"));
         }
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(2);
+            return times.Multiply(200);
         }
 
         public CongressContainer GetInstance()

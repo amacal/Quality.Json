@@ -35,14 +35,14 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllText(@"Resources\Glossary.json");
         }
 
-        public byte[] GetData()
+        public MemoryStream GetData()
         {
-            return File.ReadAllBytes(@"Resources\Glossary.json");
+            return new MemoryStream(File.ReadAllBytes(@"Resources\Glossary.bin"));
         }
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(200);
+            return times.Multiply(20000);
         }
 
         public GlossaryContainer GetInstance()

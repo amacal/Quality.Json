@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json;
+﻿using Jayrock.Json.Conversion;
 using Quality.Json.Performance.Domain;
 using Quality.Json.Performance.Payloads;
 using System;
@@ -7,11 +7,11 @@ using System.Diagnostics;
 namespace Quality.Json.Performance.Subjects
 {
     [Serializable]
-    public class NewtonsoftSubject : ISubject, IJsonImplementation
+    public class JayrockSubject : ISubject, IJsonImplementation
     {
         public string Name
         {
-            get { return "Newtonsoft.Json-" + FileVersionInfo.GetVersionInfo(typeof(JsonConvert).Assembly.Location).FileVersion; }
+            get { return "Jayrock.Json-" + FileVersionInfo.GetVersionInfo(typeof(JsonConvert).Assembly.Location).FileVersion; }
         }
 
         public string Description
@@ -25,7 +25,7 @@ namespace Quality.Json.Performance.Subjects
         }
 
         public IPayload Create<T>(IResource<T> resource)
-            where T : class
+        where T : class
         {
             return new JsonPayload(resource.GetText());
         }
@@ -33,7 +33,7 @@ namespace Quality.Json.Performance.Subjects
         public IPayload Serialize<T>(T instance)
             where T : class
         {
-            return new JsonPayload(JsonConvert.SerializeObject(instance));
+            return new JsonPayload(JsonConvert.ExportToString(instance));
         }
 
         public T Deserialize<T>(IPayload payload)
@@ -45,7 +45,7 @@ namespace Quality.Json.Performance.Subjects
         public T Deserialize<T>(string data)
             where T : class
         {
-            return JsonConvert.DeserializeObject<T>(data);
+            return JsonConvert.Import<T>(data);
         }
     }
 }

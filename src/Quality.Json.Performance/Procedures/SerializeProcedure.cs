@@ -1,5 +1,6 @@
 ﻿using KellermanSoftware.CompareNetObjects;
 using Quality.Json.Performance.Domain;
+using Quality.Json.Performance.Requirements;
 using Quality.Json.Performance.Results;
 using System;
 
@@ -16,6 +17,11 @@ namespace Quality.Json.Performance.Procedures
         public string Description
         {
             get { return null; }
+        }
+
+        public bool CanHandle(IRequirement requirement)
+        {
+            return requirement is DeserializeOnlyRequirement == false;
         }
 
         public IResultData Process<T>(IResource<T> resource, ISubject subject, ITimes times)
@@ -42,8 +48,8 @@ namespace Quality.Json.Performance.Procedures
             T instance = resource.GetInstance();
             ICompareLogic comparer = new CompareLogic(new ComparisonConfig { MaxDifferences = 100 });
 
-            string text = subject.Serialize<T>(instance);
-            T deserialized = subject.Deserialize<T>(text);
+            IPayload payload = subject.Serialize<T>(instance);
+            T deserialized = subject.Deserialize<T>(payload);
 
             IResultData result = null;
             ComparisonResult comparision = comparer.Compare(instance, deserialized);
@@ -63,10 +69,12 @@ namespace Quality.Json.Performance.Procedures
             T instance = resource.GetInstance();
 
             IRoutine routine = new Routine<T>(subject, instance);
-            DateTime started = DateTime.Now;
+            TimeSpan started = AppDomain.CurrentDomain.MonitoringTotalProcessorTime;
 
             times.Execute(routine);
-            return new MeasuredDurationResult(DateTime.Now - started);
+            TimeSpan ended = AppDomain.CurrentDomain.MonitoringTotalProcessorTime;
+
+            return new MeasuredDurationResult(ended - started);
         }
 
         private class Routine<T> : IRoutine

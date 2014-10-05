@@ -1,17 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using ProtoBuf;
 using Quality.Json.Performance.Domain;
 using Quality.Json.Performance.Payloads;
+using Quality.Json.Performance.Requirements;
 using System;
 using System.Diagnostics;
+using System.IO;
 
 namespace Quality.Json.Performance.Subjects
 {
     [Serializable]
-    public class NewtonsoftSubject : ISubject, IJsonImplementation
+    public class ProtobufSubject : ISubject, IProtobufImplementation
     {
         public string Name
         {
-            get { return "Newtonsoft.Json-" + FileVersionInfo.GetVersionInfo(typeof(JsonConvert).Assembly.Location).FileVersion; }
+            get { return "protobuf-net-" + FileVersionInfo.GetVersionInfo(typeof(Serializer).Assembly.Location).FileVersion; }
         }
 
         public string Description
@@ -21,19 +23,23 @@ namespace Quality.Json.Performance.Subjects
 
         public bool CanHandle(IRequirement requirement)
         {
-            return true;
+            return requirement is JaggedArrayRequirement == false
+                && requirement is EmptyArrayRequirement == false
+                && requirement is JsonOnlyRequirement == false;
         }
 
         public IPayload Create<T>(IResource<T> resource)
             where T : class
         {
-            return new JsonPayload(resource.GetText());
+            return new ProtobufPayload(resource.GetData());
         }
 
         public IPayload Serialize<T>(T instance)
             where T : class
         {
-            return new JsonPayload(JsonConvert.SerializeObject(instance));
+            MemoryStream stream = new MemoryStream();
+            Serializer.Serialize<T>(stream, instance);
+            return new ProtobufPayload(stream);
         }
 
         public T Deserialize<T>(IPayload payload)
@@ -42,10 +48,10 @@ namespace Quality.Json.Performance.Subjects
             return payload.Deserialize<T>(this);
         }
 
-        public T Deserialize<T>(string data)
+        public T Deserialize<T>(MemoryStream stream) 
             where T : class
         {
-            return JsonConvert.DeserializeObject<T>(data);
+            return Serializer.Deserialize<T>(stream);
         }
     }
 }

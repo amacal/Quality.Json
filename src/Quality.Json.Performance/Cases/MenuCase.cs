@@ -34,14 +34,14 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllText(@"Resources\Menu.json");
         }
 
-        public byte[] GetData()
+        public MemoryStream GetData()
         {
-            return File.ReadAllBytes(@"Resources\Menu.json");
+            return new MemoryStream(File.ReadAllBytes(@"Resources\Menu.bin"));
         }
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(400);
+            return times.Multiply(40000);
         }
 
         public MenuContainer GetInstance()

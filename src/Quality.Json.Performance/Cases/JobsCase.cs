@@ -34,14 +34,14 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllText(@"Resources\Jobs.json");
         }
 
-        public byte[] GetData()
+        public MemoryStream GetData()
         {
-            return File.ReadAllBytes(@"Resources\Jobs.json");
+            return new MemoryStream(File.ReadAllBytes(@"Resources\Jobs.bin"));
         }
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(40);
+            return times.Multiply(4000);
         }
 
         public Job[] GetInstance()

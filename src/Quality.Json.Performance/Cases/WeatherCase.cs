@@ -34,14 +34,14 @@ namespace Quality.Json.Performance.Cases
             return File.ReadAllText(@"Resources\Weather.json");
         }
 
-        public byte[] GetData()
+        public MemoryStream GetData()
         {
-            return File.ReadAllBytes(@"Resources\Weather.json");
+            return new MemoryStream(File.ReadAllBytes(@"Resources\Weather.bin"));
         }
 
         public ITimes Multiply(ITimes times)
         {
-            return times.Multiply(50);
+            return times.Multiply(5000);
         }
 
         public WeatherContainer GetInstance()

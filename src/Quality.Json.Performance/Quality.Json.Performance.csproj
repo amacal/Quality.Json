@@ -36,6 +36,9 @@
     <Reference Include="fastjson">
       <HintPath>..\..\lib\fastJSON.2.1.3.0\lib\net40\fastjson.dll</HintPath>
     </Reference>
+    <Reference Include="Jayrock.Json">
+      <HintPath>..\..\lib\jayrock-json.0.9.16530\lib\net40\Jayrock.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Jil">
       <HintPath>..\..\lib\Jil.2.1.0\lib\net45\Jil.dll</HintPath>
     </Reference>
@@ -45,12 +48,15 @@
     <Reference Include="Nancy">
       <HintPath>..\..\lib\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="NetJSON, Version=1.0.4.2, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="NetJSON, Version=1.0.4.3, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\NetJSON.1.0.4.2\lib\net40\NetJSON.dll</HintPath>
+      <HintPath>..\..\lib\NetJSON.1.0.4.3\lib\net40\NetJSON.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\lib\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="protobuf-net">
+      <HintPath>..\..\lib\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
     <Reference Include="Serilog">
       <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.dll</HintPath>
@@ -61,17 +67,22 @@
     <Reference Include="ServiceStack.Text">
       <HintPath>..\..\lib\ServiceStack.Text.4.0.31\lib\net40\ServiceStack.Text.dll</HintPath>
     </Reference>
+    <Reference Include="SevenZip.SDK">
+      <HintPath>..\..\lib\SevenZip.SDK.1.0.0\lib\SevenZip.SDK.dll</HintPath>
+    </Reference>
     <Reference Include="Sigil">
       <HintPath>..\..\lib\Sigil.4.2.2\lib\net45\Sigil.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cases\CongressCase.cs" />
     <Compile Include="Cases\GlossaryCase.cs" />
     <Compile Include="Cases\JobsCase.cs" />
+    <Compile Include="Cases\LargeCase.cs" />
     <Compile Include="Cases\MenuCase.cs" />
     <Compile Include="Cases\NumberCase.cs" />
     <Compile Include="Cases\RowCase.cs" />
@@ -80,7 +91,10 @@
     <Compile Include="Domain\ICaseInfo.cs" />
     <Compile Include="Domain\IDescriptive.cs" />
     <Compile Include="Domain\IExecutionGroup.cs" />
+    <Compile Include="Domain\IJsonImplementation.cs" />
     <Compile Include="Domain\IParallelism.cs" />
+    <Compile Include="Domain\IPayload.cs" />
+    <Compile Include="Domain\IProtobufImplementation.cs" />
     <Compile Include="Domain\IReportInfo.cs" />
     <Compile Include="Domain\IRequirement.cs" />
     <Compile Include="Domain\IRemark.cs" />
@@ -95,12 +109,19 @@
     <Compile Include="Domain\ITimes.cs" />
     <Compile Include="Domain\Parallelism.cs" />
     <Compile Include="Domain\Times.cs" />
+    <Compile Include="Payloads\JsonPayload.cs" />
+    <Compile Include="Payloads\ProtobufPayload.cs" />
     <Compile Include="Printers\ConsolePrinter.cs" />
     <Compile Include="Requirements\CaseInsensitiveRequirement.cs" />
     <Compile Include="Printers\PlainTextPrinter.cs" />
     <Compile Include="Domain\TestSuitBuilder.cs" />
+    <Compile Include="Requirements\DeserializeOnlyRequirement.cs" />
+    <Compile Include="Requirements\EmptyArrayRequirement.cs" />
+    <Compile Include="Requirements\JaggedArrayRequirement.cs" />
+    <Compile Include="Requirements\JsonOnlyRequirement.cs" />
     <Compile Include="Resources\Congress.cs" />
     <Compile Include="Resources\Jobs.cs" />
+    <Compile Include="Resources\Large.cs" />
     <Compile Include="Resources\Number.cs" />
     <Compile Include="Resources\Row.cs" />
     <Compile Include="Cases\WidgetCase.cs" />
@@ -128,53 +149,89 @@
     <Compile Include="Results\NotSupportedRequirementResult.cs" />
     <Compile Include="Results\Remark.cs" />
     <Compile Include="Subjects\FastJsonSubject.cs" />
+    <Compile Include="Subjects\JayrockSubject.cs" />
     <Compile Include="Subjects\JilSubject.cs" />
     <Compile Include="Subjects\JsonToolkitSubject.cs" />
     <Compile Include="Subjects\NancySubject.cs" />
     <Compile Include="Subjects\NetJsonSubject.cs" />
     <Compile Include="Subjects\NewtonsoftSubject.cs" />
+    <Compile Include="Subjects\ProtobufSubject.cs" />
     <Compile Include="Subjects\ServiceStackSubject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Menu.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Widget.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\Large.7z">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Large.ascii">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Large.unicode">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Menu.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Widget.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Glossary.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\Glossary.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Row.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\Row.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Weather.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Resources\Congress.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\Weather.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Congress.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Jobs.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\Jobs.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Number.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\Number.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Twitter.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\Twitter.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Glossary.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Menu.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Row.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Weather.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Widget.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jobs.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Number.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,16 +16,17 @@ namespace Quality.Json.Performance.Runner
     {
         public static void Main()
         {
-            Program.SetProcessPriority();
+            Program.InitializeEnvironment();
             Program.InitializeLogger();
             Program.ExecuteTests();
 
             Console.ReadKey();
         }
 
-        private static void SetProcessPriority()
+        private static void InitializeEnvironment()
         {
-            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.High;
+            AppDomain.MonitoringIsEnabled = true;
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.Normal;
         }
 
         private static void InitializeLogger()
@@ -41,8 +42,8 @@ namespace Quality.Json.Performance.Runner
 
         private static void ExecuteTests()
         {
-            ITimes times = new Times(100);
-            IParallelism parallelism = new Parallelism(Math.Max(Environment.ProcessorCount - 1, 1));
+            ITimes times = new Times(1);
+            IParallelism parallelism = new Parallelism(2);
 
             ITestSuit suit = Program.CreateSuit();
             IReport report = suit.Execute(times, parallelism);
@@ -63,6 +64,7 @@ namespace Quality.Json.Performance.Runner
             builder.AddCase(new JobsCase());
             builder.AddCase(new NumberCase());
             builder.AddCase(new TwitterCase());
+            builder.AddCase(new LargeCase());
 
             builder.AddSubject(new NewtonsoftSubject());
             builder.AddSubject(new ServiceStackSubject());
@@ -71,6 +73,8 @@ namespace Quality.Json.Performance.Runner
             builder.AddSubject(new JsonToolkitSubject());
             builder.AddSubject(new JilSubject());
             builder.AddSubject(new FastJsonSubject());
+            builder.AddSubject(new ProtobufSubject());
+            builder.AddSubject(new JayrockSubject());
 
             builder.AddProcedure(new SerializeProcedure());
             builder.AddProcedure(new DeserializeProcedure());

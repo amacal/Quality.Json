@@ -18,6 +18,11 @@ namespace Quality.Json.Performance.Procedures
             get { return null; }
         }
 
+        public bool CanHandle(IRequirement requirement)
+        {
+            return true;
+        }
+
         public IResultData Process<T>(IResource<T> resource, ISubject subject, ITimes times)
             where T : class
         {
@@ -39,11 +44,11 @@ namespace Quality.Json.Performance.Procedures
         private IResultData Validate<T>(IResource<T> resource, ISubject subject)
             where T : class
         {
-            string text = resource.GetText();
+            IPayload payload = subject.Create<T>(resource);
             T template = resource.GetInstance();
 
             ICompareLogic comparer = new CompareLogic(new ComparisonConfig { MaxDifferences = 100 });
-            T deserialized = subject.Deserialize<T>(text);
+            T deserialized = subject.Deserialize<T>(payload);
 
             IResultData result = null;
             ComparisonResult comparision = comparer.Compare(template, deserialized);
@@ -60,30 +65,32 @@ namespace Quality.Json.Performance.Procedures
             where T : class
         {
             times = resource.Multiply(times);
-            string text = resource.GetText();
+            IPayload payload = subject.Create<T>(resource);
 
-            IRoutine routine = new Routine<T>(subject, text);
-            DateTime started = DateTime.Now;
+            IRoutine routine = new Routine<T>(subject, payload);
+            TimeSpan started = AppDomain.CurrentDomain.MonitoringTotalProcessorTime;
 
             times.Execute(routine);
-            return new MeasuredDurationResult(DateTime.Now - started);
+            TimeSpan ended = AppDomain.CurrentDomain.MonitoringTotalProcessorTime;
+
+            return new MeasuredDurationResult(ended - started);
         }
 
         private class Routine<T> : IRoutine
             where T : class
         {
             private readonly ISubject subject;
-            private readonly string text;
+            private readonly IPayload payload;
 
-            public Routine(ISubject subject, string text)
+            public Routine(ISubject subject, IPayload payload)
             {
                 this.subject = subject;
-                this.text = text;
+                this.payload = payload;
             }
 
             public void Execute()
             {
-                this.subject.Deserialize<T>(this.text);
+                this.subject.Deserialize<T>(this.payload);
             }
         }
     }

@@ -43,6 +43,7 @@ namespace Quality.Json.Performance.Domain
             }
             finally
             {
+                Log.Information("Executing {Subject}/{Procedure} on thread {ThreadId} completed", this.subject.Name, this.procedure.Name);
                 AppDomain.Unload(domain);
             }
         }

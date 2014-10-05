@@ -73,7 +73,7 @@ namespace Quality.Json.Performance.Domain
                         return results;
                     }
 
-                    double ceiling = Math.Ceiling(1.0d / visitor.GetValue().TotalSeconds);
+                    double ceiling = Math.Ceiling(1.2d / visitor.GetValue().TotalSeconds);
                     times = times.Multiply(Math.Max(2, (int)ceiling));
                     input = OptimizeOrder(results);
                 }
