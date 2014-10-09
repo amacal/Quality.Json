@@ -38,10 +38,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Serilog">
-      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.dll</HintPath>
+      <HintPath>..\..\lib\Serilog.1.4.11\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Serilog.FullNetFx">
-      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.FullNetFx.dll</HintPath>
+      <HintPath>..\..\lib\Serilog.1.4.11\lib\net45\Serilog.FullNetFx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -52,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quality.Json.Performance\Quality.Json.Performance.csproj">

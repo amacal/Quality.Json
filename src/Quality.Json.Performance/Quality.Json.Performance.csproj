@@ -49,9 +49,9 @@
     <Reference Include="Nancy">
       <HintPath>..\..\lib\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="NetJSON, Version=1.0.4.4, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="NetJSON, Version=1.0.4.5, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\NetJSON.1.0.4.4\lib\net40\NetJSON.dll</HintPath>
+      <HintPath>..\..\lib\NetJSON.1.0.4.5\lib\net40\NetJSON.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\lib\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -59,14 +59,17 @@
     <Reference Include="protobuf-net">
       <HintPath>..\..\lib\protobuf-net.2.0.0.668\lib\net40\protobuf-net.dll</HintPath>
     </Reference>
-    <Reference Include="Serilog">
-      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.dll</HintPath>
+    <Reference Include="Serilog, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Serilog.1.4.11\lib\net45\Serilog.dll</HintPath>
     </Reference>
-    <Reference Include="Serilog.FullNetFx">
-      <HintPath>..\..\lib\Serilog.1.4.10\lib\net45\Serilog.FullNetFx.dll</HintPath>
+    <Reference Include="Serilog.FullNetFx, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Serilog.1.4.11\lib\net45\Serilog.FullNetFx.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\..\lib\ServiceStack.Text.4.0.31\lib\net40\ServiceStack.Text.dll</HintPath>
+    <Reference Include="ServiceStack.Text, Version=4.0.32.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ServiceStack.Text.4.0.32\lib\net40\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="SevenZip.SDK">
       <HintPath>..\..\lib\SevenZip.SDK.1.0.0\lib\SevenZip.SDK.dll</HintPath>
@@ -160,6 +163,7 @@
     <Compile Include="Subjects\ServiceStackSubject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\Large.7z">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
