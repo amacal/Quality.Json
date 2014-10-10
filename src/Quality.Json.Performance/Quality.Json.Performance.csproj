@@ -40,8 +40,9 @@
     <Reference Include="Jayrock.Json">
       <HintPath>..\..\lib\jayrock-json.0.9.16530\lib\net40\Jayrock.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Jil">
-      <HintPath>..\..\lib\Jil.2.1.0\lib\net45\Jil.dll</HintPath>
+    <Reference Include="Jil, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Jil.2.1.1\lib\net45\Jil.dll</HintPath>
     </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects">
       <HintPath>..\..\lib\CompareNETObjects.3.01.0.0\lib\net45\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
@@ -163,7 +164,6 @@
     <Compile Include="Subjects\ServiceStackSubject.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Resources\Large.7z">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
