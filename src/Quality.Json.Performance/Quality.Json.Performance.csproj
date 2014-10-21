@@ -40,9 +40,9 @@
     <Reference Include="Jayrock.Json">
       <HintPath>..\..\lib\jayrock-json.0.9.16530\lib\net40\Jayrock.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Jil, Version=2.1.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Jil, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Jil.2.1.1\lib\net45\Jil.dll</HintPath>
+      <HintPath>..\..\lib\Jil.2.2.0\lib\net45\Jil.dll</HintPath>
     </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects">
       <HintPath>..\..\lib\CompareNETObjects.3.01.0.0\lib\net45\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
@@ -50,9 +50,9 @@
     <Reference Include="Nancy">
       <HintPath>..\..\lib\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="NetJSON, Version=1.0.4.5, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="NetJSON, Version=1.0.5.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\NetJSON.1.0.4.5\lib\net40\NetJSON.dll</HintPath>
+      <HintPath>..\..\lib\NetJSON.1.0.5\lib\net40\NetJSON.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\lib\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -62,11 +62,11 @@
     </Reference>
     <Reference Include="Serilog, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Serilog.1.4.11\lib\net45\Serilog.dll</HintPath>
+      <HintPath>..\..\lib\Serilog.1.4.12\lib\net45\Serilog.dll</HintPath>
     </Reference>
     <Reference Include="Serilog.FullNetFx, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Serilog.1.4.11\lib\net45\Serilog.FullNetFx.dll</HintPath>
+      <HintPath>..\..\lib\Serilog.1.4.12\lib\net45\Serilog.FullNetFx.dll</HintPath>
     </Reference>
     <Reference Include="ServiceStack.Text, Version=4.0.32.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -164,6 +164,7 @@
     <Compile Include="Subjects\ServiceStackSubject.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\Large.7z">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
