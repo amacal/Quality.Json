@@ -30,20 +30,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ComputerBeacon.Json">
-      <HintPath>..\..\lib\ComputerBeacon.Json.4.3.832\lib\portable-net4+sl4+wp7+win8\ComputerBeacon.Json.dll</HintPath>
+    <Reference Include="ComputerBeacon.Json, Version=4.3.833.2221, Culture=neutral, PublicKeyToken=9e66e0c2305d517d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ComputerBeacon.Json.4.3.833\lib\portable-net4+sl4+wp7+win8\ComputerBeacon.Json.dll</HintPath>
     </Reference>
     <Reference Include="fastjson, Version=2.1.0.0, Culture=neutral, PublicKeyToken=6b75a806b86095cd, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\fastJSON.2.1.6.0\lib\net40\fastjson.dll</HintPath>
+      <HintPath>..\..\lib\fastJSON.2.1.7.0\lib\net40\fastjson.dll</HintPath>
     </Reference>
     <Reference Include="Jayrock.Json, Version=0.9.16530.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\jayrock-json.0.9.16530.1\lib\net40\Jayrock.Json.dll</HintPath>
     </Reference>
-    <Reference Include="Jil, Version=2.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Jil, Version=2.5.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Jil.2.4.0\lib\net45\Jil.dll</HintPath>
+      <HintPath>..\..\lib\Jil.2.5.2\lib\net45\Jil.dll</HintPath>
     </Reference>
     <Reference Include="KellermanSoftware.Compare-NET-Objects">
       <HintPath>..\..\lib\CompareNETObjects.3.01.0.0\lib\net45\KellermanSoftware.Compare-NET-Objects.dll</HintPath>
@@ -64,21 +65,22 @@
     </Reference>
     <Reference Include="Serilog, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Serilog.1.4.27\lib\net45\Serilog.dll</HintPath>
+      <HintPath>..\..\lib\Serilog.1.4.76\lib\net45\Serilog.dll</HintPath>
     </Reference>
-    <Reference Include="Serilog.FullNetFx">
-      <HintPath>..\..\lib\Serilog.1.4.27\lib\net45\Serilog.FullNetFx.dll</HintPath>
-    </Reference>
-    <Reference Include="ServiceStack.Text, Version=4.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Serilog.FullNetFx, Version=1.4.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\ServiceStack.Text.4.0.33\lib\net40\ServiceStack.Text.dll</HintPath>
+      <HintPath>..\..\lib\Serilog.1.4.76\lib\net45\Serilog.FullNetFx.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.34.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\ServiceStack.Text.4.0.34\lib\net40\ServiceStack.Text.dll</HintPath>
     </Reference>
     <Reference Include="SevenZip.SDK">
       <HintPath>..\..\lib\SevenZip.SDK.1.0.0\lib\SevenZip.SDK.dll</HintPath>
     </Reference>
-    <Reference Include="Sigil, Version=4.3.0.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
+    <Reference Include="Sigil, Version=4.3.1.0, Culture=neutral, PublicKeyToken=2d06c3494341c8ab, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\lib\Sigil.4.3.0\lib\net45\Sigil.dll</HintPath>
+      <HintPath>..\..\lib\Sigil.4.3.1\lib\net45\Sigil.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
